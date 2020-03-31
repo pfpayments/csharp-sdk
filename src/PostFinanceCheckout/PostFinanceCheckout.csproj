@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    </PropertyGroup>
+    <PropertyGroup>
+        <AssemblyName>PostFinanceCheckout</AssemblyName>
+        <AssemblyTitle>PostFinance Checkout SDK for C#</AssemblyTitle>
+        <Authors>customweb GmbH</Authors>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <Company>customweb GmbH</Company>
+        <Copyright>Apache-2.0</Copyright>
+        <Description>PostFinance Checkout SDK for C#</Description>
+        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+        <PackageIconUrl>https://app-wallee.com/assets/images/wallee-icon-primary.svg</PackageIconUrl>
+        <PackageId>PostFinanceCheckout</PackageId>
+        <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/pfpayments/csharp-sdk</PackageProjectUrl>
+        <PackageVersion>2.0.7</PackageVersion>
+        <PackageTags>PostFinanceCheckout;payment;sdk;Payment Integration</PackageTags>
+        <OutputType>Library</OutputType>
+        <Owners>customweb</Owners>
+        <ReleaseVersion>2.0.7</ReleaseVersion>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/pfpayments/csharp-sdk.git</RepositoryUrl>
+        <RootNamespace>PostFinanceCheckout</RootNamespace>
+        <Summary>PostFinance Checkout SDK for C#</Summary>
+        <SynchReleaseVersion>false</SynchReleaseVersion>
+        <Title>PostFinanceCheckout</Title>
+    </PropertyGroup>
+    <ItemGroup>
+            <PackageReference Include="RestSharp" Version="106.2.1"/>
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.2"/>
+        <PackageReference Include="JsonSubTypes" Version="1.6.0"/>
+        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    </ItemGroup>
+
+        <ItemGroup>
+            <Reference Include="System"/>
+            <Reference Include="System.Core"/>
+            <Reference Include="System.Xml.Linq"/>
+            <Reference Include="System.Data.DataSetExtensions"/>
+            <Reference Include="System.ComponentModel.DataAnnotations"/>
+            <Reference Include="Microsoft.CSharp"/>
+            <Reference Include="System.Data"/>
+            <Reference Include="System.Runtime.Serialization"/>
+            <Reference Include="System.Xml"/>
+        </ItemGroup>
+
+</Project>
