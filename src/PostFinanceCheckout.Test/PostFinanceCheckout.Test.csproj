@@ -6,8 +6,8 @@
         <AssemblyName>PostFinanceCheckout.Test</AssemblyName>
         <PackageId>PostFinanceCheckout.Test</PackageId>
         <OutputType>Library</OutputType>
-        <Authors>customweb GmbH</Authors>
-        <Company>customweb GmbH</Company>
+        <Authors>wallee AG</Authors>
+        <Company>wallee AG</Company>
         <AssemblyTitle>PostFinance Checkout SDK for C#</AssemblyTitle>
         <Description>PostFinance Checkout SDK for C#</Description>
         <Copyright>Apache-2.0</Copyright>

@@ -15,31 +15,31 @@ using SwaggerDateConverter = PostFinanceCheckout.Client.SwaggerDateConverter;
 namespace PostFinanceCheckout.Model
 {
     /// <summary>
-    /// Defines ShopifyIntegrationAppVersion
+    /// Defines TransactionCompletionBehavior
     /// </summary>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum ShopifyIntegrationAppVersion
+    public enum TransactionCompletionBehavior
     {
         
         /// <summary>
-        /// Enum BASIC for value: BASIC
+        /// Enum COMPLETE_IMMEDIATELY for value: COMPLETE_IMMEDIATELY
         /// </summary>
-        [EnumMember(Value = "BASIC")]
-        BASIC,
+        [EnumMember(Value = "COMPLETE_IMMEDIATELY")]
+        COMPLETE_IMMEDIATELY,
         
         /// <summary>
-        /// Enum SUBSCRIPTION for value: SUBSCRIPTION
+        /// Enum COMPLETE_DEFERRED for value: COMPLETE_DEFERRED
         /// </summary>
-        [EnumMember(Value = "SUBSCRIPTION")]
-        SUBSCRIPTION,
+        [EnumMember(Value = "COMPLETE_DEFERRED")]
+        COMPLETE_DEFERRED,
         
         /// <summary>
-        /// Enum API_2019_07 for value: API_2019_07
+        /// Enum USE_CONFIGURATION for value: USE_CONFIGURATION
         /// </summary>
-        [EnumMember(Value = "API_2019_07")]
-        API_2019_07
+        [EnumMember(Value = "USE_CONFIGURATION")]
+        USE_CONFIGURATION
     }
 
 }

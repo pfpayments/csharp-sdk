@@ -153,9 +153,6 @@ namespace PostFinanceCheckout.Client
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
 
-            // set timeout
-            
-            RestClient.Timeout = Configuration.Timeout;
             // set user agent
             RestClient.UserAgent = Configuration.UserAgent;
 
@@ -294,7 +291,7 @@ namespace PostFinanceCheckout.Client
         {
             try
             {
-                return obj != null ? JsonConvert.SerializeObject(obj) : null;
+				return obj != null ? JsonConvert.SerializeObject(obj, Formatting.None, new JsonSerializerSettings{ NullValueHandling = NullValueHandling.Ignore}) : null;
             }
             catch (Exception e)
             {
@@ -535,6 +532,14 @@ namespace PostFinanceCheckout.Client
             }
             return "?" + string.Join("&", query.ToArray());
         }
+
+		/// <summary>
+		/// Reset timeout to default
+		/// https://docs.microsoft.com/en-us/dotnet/api/system.net.httpwebrequest.timeout?view=netcore-3.1
+		/// </summary>
+		public void ResetTimeout(){
+			RestClient.Timeout = 100 * 1000;
+		}
 
     }
 }

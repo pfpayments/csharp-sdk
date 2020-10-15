@@ -133,7 +133,8 @@ namespace PostFinanceCheckout.Service
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
