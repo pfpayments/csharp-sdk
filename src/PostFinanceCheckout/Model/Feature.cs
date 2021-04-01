@@ -147,6 +147,7 @@ namespace PostFinanceCheckout.Model
                 (
                     this.Description == input.Description ||
                     this.Description != null &&
+                    input.Description != null &&
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
@@ -162,11 +163,13 @@ namespace PostFinanceCheckout.Model
                 (
                     this.Name == input.Name ||
                     this.Name != null &&
+                    input.Name != null &&
                     this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
                     this.RequiredFeatures == input.RequiredFeatures ||
                     this.RequiredFeatures != null &&
+                    input.RequiredFeatures != null &&
                     this.RequiredFeatures.SequenceEqual(input.RequiredFeatures)
                 ) && 
                 (

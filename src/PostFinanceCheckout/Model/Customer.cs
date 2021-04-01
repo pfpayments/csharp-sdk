@@ -195,6 +195,7 @@ namespace PostFinanceCheckout.Model
                 (
                     this.MetaData == input.MetaData ||
                     this.MetaData != null &&
+                    input.MetaData != null &&
                     this.MetaData.SequenceEqual(input.MetaData)
                 ) && 
                 (

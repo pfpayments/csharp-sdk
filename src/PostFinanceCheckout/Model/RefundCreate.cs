@@ -161,6 +161,7 @@ namespace PostFinanceCheckout.Model
                 (
                     this.Reductions == input.Reductions ||
                     this.Reductions != null &&
+                    input.Reductions != null &&
                     this.Reductions.SequenceEqual(input.Reductions)
                 ) && 
                 (

@@ -150,6 +150,7 @@ namespace PostFinanceCheckout.Model
                 (
                     this.Actions == input.Actions ||
                     this.Actions != null &&
+                    input.Actions != null &&
                     this.Actions.SequenceEqual(input.Actions)
                 ) && 
                 (

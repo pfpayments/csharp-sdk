@@ -93,6 +93,7 @@ namespace PostFinanceCheckout.Model
                 (
                     this.Title == input.Title ||
                     this.Title != null &&
+                    input.Title != null &&
                     this.Title.SequenceEqual(input.Title)
                 );
         }

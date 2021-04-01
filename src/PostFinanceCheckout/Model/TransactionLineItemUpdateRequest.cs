@@ -98,6 +98,7 @@ namespace PostFinanceCheckout.Model
                 (
                     this.NewLineItems == input.NewLineItems ||
                     this.NewLineItems != null &&
+                    input.NewLineItems != null &&
                     this.NewLineItems.SequenceEqual(input.NewLineItems)
                 ) && 
                 (

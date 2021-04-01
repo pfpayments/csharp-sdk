@@ -107,6 +107,7 @@ namespace PostFinanceCheckout.Model
                 (
                     this.Label == input.Label ||
                     this.Label != null &&
+                    input.Label != null &&
                     this.Label.SequenceEqual(input.Label)
                 ) && 
                 (

@@ -312,6 +312,7 @@ namespace PostFinanceCheckout.Model
                 (
                     this.Labels == input.Labels ||
                     this.Labels != null &&
+                    input.Labels != null &&
                     this.Labels.SequenceEqual(input.Labels)
                 ) && base.Equals(input) && 
                 (
