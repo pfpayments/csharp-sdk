@@ -15,51 +15,35 @@ using SwaggerDateConverter = PostFinanceCheckout.Client.SwaggerDateConverter;
 namespace PostFinanceCheckout.Model
 {
     /// <summary>
-    /// Token
+    /// ShopifySubscriber
     /// </summary>
     [DataContract]
-    public partial class Token :  IEquatable<Token>
+    public partial class ShopifySubscriber :  IEquatable<ShopifySubscriber>
     {
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=true)]
-        public CreationEntityState? State { get; set; }
+        public ShopifySubscriberState? State { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Token" /> class.
+        /// Initializes a new instance of the <see cref="ShopifySubscriber" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Token()
+        public ShopifySubscriber()
         {
         }
 
         /// <summary>
-        /// The created on date indicates the date on which the entity was stored into the database.
+        /// Gets or Sets CreatedOn
         /// </summary>
-        /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The customer email address is the email address of the customer.
+        /// Gets or Sets EmailAddress
         /// </summary>
-        /// <value>The customer email address is the email address of the customer.</value>
-        [DataMember(Name="customerEmailAddress", EmitDefaultValue=true)]
-        public string CustomerEmailAddress { get; private set; }
-
-        /// <summary>
-        /// The customer ID identifies the customer in the merchant system. In case the customer ID has been provided it has to correspond with the customer ID provided on the transaction. The customer ID will not be changed automatically. The merchant system has to provide it.
-        /// </summary>
-        /// <value>The customer ID identifies the customer in the merchant system. In case the customer ID has been provided it has to correspond with the customer ID provided on the transaction. The customer ID will not be changed automatically. The merchant system has to provide it.</value>
-        [DataMember(Name="customerId", EmitDefaultValue=true)]
-        public string CustomerId { get; private set; }
-
-        /// <summary>
-        /// When a token is enabled for one-click payments the buyer will be able to select the token within the iFrame or on the payment page to pay with the token. The usage of the token will reduce the number of steps the buyer has to go through. The buyer is linked via the customer ID on the transaction with the token. Means the token will be visible for buyers with the same customer ID. Additionally the payment method has to be configured to allow the one-click payments.
-        /// </summary>
-        /// <value>When a token is enabled for one-click payments the buyer will be able to select the token within the iFrame or on the payment page to pay with the token. The usage of the token will reduce the number of steps the buyer has to go through. The buyer is linked via the customer ID on the transaction with the token. Means the token will be visible for buyers with the same customer ID. Additionally the payment method has to be configured to allow the one-click payments.</value>
-        [DataMember(Name="enabledForOneClickPayment", EmitDefaultValue=true)]
-        public bool? EnabledForOneClickPayment { get; private set; }
+        [DataMember(Name="emailAddress", EmitDefaultValue=true)]
+        public string EmailAddress { get; private set; }
 
         /// <summary>
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
@@ -76,17 +60,17 @@ namespace PostFinanceCheckout.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Language
-        /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
-        public string Language { get; private set; }
-
-        /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
         [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets PhoneNumber
+        /// </summary>
+        [DataMember(Name="phoneNumber", EmitDefaultValue=true)]
+        public string PhoneNumber { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
@@ -95,20 +79,12 @@ namespace PostFinanceCheckout.Model
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
-
         /// <summary>
-        /// The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+        /// Gets or Sets Shop
         /// </summary>
-        /// <value>The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</value>
-        [DataMember(Name="timeZone", EmitDefaultValue=true)]
-        public string TimeZone { get; private set; }
+        [DataMember(Name="shop", EmitDefaultValue=true)]
+        public long? Shop { get; private set; }
 
-        /// <summary>
-        /// Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).
-        /// </summary>
-        /// <value>Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).</value>
-        [DataMember(Name="tokenReference", EmitDefaultValue=true)]
-        public string TokenReference { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
@@ -124,19 +100,16 @@ namespace PostFinanceCheckout.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Token {\n");
+            sb.Append("class ShopifySubscriber {\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
-            sb.Append("  CustomerEmailAddress: ").Append(CustomerEmailAddress).Append("\n");
-            sb.Append("  CustomerId: ").Append(CustomerId).Append("\n");
-            sb.Append("  EnabledForOneClickPayment: ").Append(EnabledForOneClickPayment).Append("\n");
+            sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
+            sb.Append("  Shop: ").Append(Shop).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
-            sb.Append("  TokenReference: ").Append(TokenReference).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -158,15 +131,15 @@ namespace PostFinanceCheckout.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Token);
+            return this.Equals(input as ShopifySubscriber);
         }
 
         /// <summary>
-        /// Returns true if Token instances are equal
+        /// Returns true if ShopifySubscriber instances are equal
         /// </summary>
-        /// <param name="input">Instance of Token to be compared</param>
+        /// <param name="input">Instance of ShopifySubscriber to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Token input)
+        public bool Equals(ShopifySubscriber input)
         {
             if (input == null)
                 return false;
@@ -178,19 +151,9 @@ namespace PostFinanceCheckout.Model
                     this.CreatedOn.Equals(input.CreatedOn))
                 ) && 
                 (
-                    this.CustomerEmailAddress == input.CustomerEmailAddress ||
-                    (this.CustomerEmailAddress != null &&
-                    this.CustomerEmailAddress.Equals(input.CustomerEmailAddress))
-                ) && 
-                (
-                    this.CustomerId == input.CustomerId ||
-                    (this.CustomerId != null &&
-                    this.CustomerId.Equals(input.CustomerId))
-                ) && 
-                (
-                    this.EnabledForOneClickPayment == input.EnabledForOneClickPayment ||
-                    (this.EnabledForOneClickPayment != null &&
-                    this.EnabledForOneClickPayment.Equals(input.EnabledForOneClickPayment))
+                    this.EmailAddress == input.EmailAddress ||
+                    (this.EmailAddress != null &&
+                    this.EmailAddress.Equals(input.EmailAddress))
                 ) && 
                 (
                     this.ExternalId == input.ExternalId ||
@@ -203,14 +166,14 @@ namespace PostFinanceCheckout.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Language == input.Language ||
-                    (this.Language != null &&
-                    this.Language.Equals(input.Language))
-                ) && 
-                (
                     this.LinkedSpaceId == input.LinkedSpaceId ||
                     (this.LinkedSpaceId != null &&
                     this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                ) && 
+                (
+                    this.PhoneNumber == input.PhoneNumber ||
+                    (this.PhoneNumber != null &&
+                    this.PhoneNumber.Equals(input.PhoneNumber))
                 ) && 
                 (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
@@ -218,19 +181,14 @@ namespace PostFinanceCheckout.Model
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
                 ) && 
                 (
+                    this.Shop == input.Shop ||
+                    (this.Shop != null &&
+                    this.Shop.Equals(input.Shop))
+                ) && 
+                (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
-                ) && 
-                (
-                    this.TimeZone == input.TimeZone ||
-                    (this.TimeZone != null &&
-                    this.TimeZone.Equals(input.TimeZone))
-                ) && 
-                (
-                    this.TokenReference == input.TokenReference ||
-                    (this.TokenReference != null &&
-                    this.TokenReference.Equals(input.TokenReference))
                 ) && 
                 (
                     this.Version == input.Version ||
@@ -250,28 +208,22 @@ namespace PostFinanceCheckout.Model
                 int hashCode = 41;
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
-                if (this.CustomerEmailAddress != null)
-                    hashCode = hashCode * 59 + this.CustomerEmailAddress.GetHashCode();
-                if (this.CustomerId != null)
-                    hashCode = hashCode * 59 + this.CustomerId.GetHashCode();
-                if (this.EnabledForOneClickPayment != null)
-                    hashCode = hashCode * 59 + this.EnabledForOneClickPayment.GetHashCode();
+                if (this.EmailAddress != null)
+                    hashCode = hashCode * 59 + this.EmailAddress.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Language != null)
-                    hashCode = hashCode * 59 + this.Language.GetHashCode();
                 if (this.LinkedSpaceId != null)
                     hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
+                if (this.PhoneNumber != null)
+                    hashCode = hashCode * 59 + this.PhoneNumber.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
+                if (this.Shop != null)
+                    hashCode = hashCode * 59 + this.Shop.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
-                if (this.TimeZone != null)
-                    hashCode = hashCode * 59 + this.TimeZone.GetHashCode();
-                if (this.TokenReference != null)
-                    hashCode = hashCode * 59 + this.TokenReference.GetHashCode();
                 if (this.Version != null)
                     hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;

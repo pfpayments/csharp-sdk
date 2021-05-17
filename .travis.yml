@@ -10,4 +10,4 @@ script:
     - msbuild /t:restore PostFinanceCheckout.sln
     - msbuild PostFinanceCheckout.sln /t:build /p:Configuration=Release
     - mono testrunner/NUnit.ConsoleRunner.3.9.0/tools/nunit3-console.exe ./src/PostFinanceCheckout.Test/bin/Release/net452/PostFinanceCheckout.Test.dll --inprocess
-    - nuget push ./src/PostFinanceCheckout/bin/Release/PostFinanceCheckout.3.0.0.nupkg -Source nuget.org -ApiKey $NUGET_API_KEY_WALLEE  -Verbosity detailed -SkipDuplicate
+    - nuget push ./src/PostFinanceCheckout/bin/Release/PostFinanceCheckout.3.0.1.nupkg -Source nuget.org -ApiKey $NUGET_API_KEY_WALLEE  -Verbosity detailed -SkipDuplicate
