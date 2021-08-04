@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/pfpayments/csharp-sdk.svg?branch=master)](https://travis-ci.org/pfpayments/csharp-sdk)
-
 # PostFinance Checkout C# Library
 
 The PostFinance Checkout C# library wraps around the PostFinance Checkout API. This library facilitates your interaction with various services such as transactions, accounts, and subscriptions.
@@ -34,13 +32,13 @@ NOTE: RestSharp versions greater than 106.2.1 have a bug which causes file uploa
 ## Installation
 ```
 # Package Manager
-Install-Package PostFinanceCheckout -Version 3.0.1
+Install-Package PostFinanceCheckout -Version 3.0.3
 # .NET CLI
-dotnet add package PostFinanceCheckout --version 3.0.1
+dotnet add package PostFinanceCheckout --version 3.0.3
 # Paket CLI
-paket add PostFinanceCheckout --version 3.0.1
+paket add PostFinanceCheckout --version 3.0.3
 # PackageReference
-<PackageReference Include="PostFinanceCheckout" Version="3.0.1" />
+<PackageReference Include="PostFinanceCheckout" Version="3.0.3" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
