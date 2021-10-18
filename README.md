@@ -32,13 +32,13 @@ NOTE: RestSharp versions greater than 106.2.1 have a bug which causes file uploa
 ## Installation
 ```
 # Package Manager
-Install-Package PostFinanceCheckout -Version 3.0.7
+Install-Package PostFinanceCheckout -Version 3.0.8
 # .NET CLI
-dotnet add package PostFinanceCheckout --version 3.0.7
+dotnet add package PostFinanceCheckout --version 3.0.8
 # Paket CLI
-paket add PostFinanceCheckout --version 3.0.7
+paket add PostFinanceCheckout --version 3.0.8
 # PackageReference
-<PackageReference Include="PostFinanceCheckout" Version="3.0.7" />
+<PackageReference Include="PostFinanceCheckout" Version="3.0.8" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
