@@ -44,7 +44,7 @@ namespace PostFinanceCheckout.Model
         /// <summary>
         /// Gets or Sets Customer
         /// </summary>
-        [DataMember(Name="customer", EmitDefaultValue=true)]
+        [DataMember(Name="customer", EmitDefaultValue=false)]
         public long? Customer { get; set; }
 
         /// <summary>

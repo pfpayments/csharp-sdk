@@ -54,7 +54,7 @@ namespace PostFinanceCheckout.Model
         /// <summary>
         /// Gets or Sets FieldName
         /// </summary>
-        [DataMember(Name="fieldName", EmitDefaultValue=true)]
+        [DataMember(Name="fieldName", EmitDefaultValue=false)]
         public string FieldName { get; set; }
 
 
