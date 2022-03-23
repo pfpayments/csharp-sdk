@@ -19,7 +19,7 @@ namespace PostFinanceCheckout.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "4.0.3";
+        public const string Version = "4.0.4";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -90,7 +90,7 @@ namespace PostFinanceCheckout.Client
             }
             _authenticationKey =  authenticationKey;
             _applicationUserID = applicationUserID;
-            UserAgent = "PostFinanceCheckout/4.0.3/csharp";
+            UserAgent = "PostFinanceCheckout/4.0.4/csharp";
             BasePath = "https://checkout.postfinance.ch:443/api";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -338,8 +338,8 @@ namespace PostFinanceCheckout.Client
             String report = "C# SDK (PostFinanceCheckout) Debug Report:\n";
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
-            report += "    Version of the API: 4.0.3\n";
-            report += "    SDK Package Version: 4.0.3\n";
+            report += "    Version of the API: 4.0.4\n";
+            report += "    SDK Package Version: 4.0.4\n";
 
             return report;
         }
