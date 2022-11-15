@@ -20,12 +20,12 @@
         <PackageId>PostFinanceCheckout</PackageId>
         <PackageLicense>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicense>
         <PackageProjectUrl>https://github.com/pfpayments/csharp-sdk</PackageProjectUrl>
-        <PackageVersion>4.3.0</PackageVersion>
-        <Version>4.3.0</Version>
+        <PackageVersion>4.3.8</PackageVersion>
+        <Version>4.3.8</Version>
         <PackageTags>PostFinanceCheckout;payment;sdk;Payment Integration</PackageTags>
         <OutputType>Library</OutputType>
         <Owners>customweb</Owners>
-        <ReleaseVersion>4.3.0</ReleaseVersion>
+        <ReleaseVersion>4.3.8</ReleaseVersion>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/pfpayments/csharp-sdk.git</RepositoryUrl>
         <RootNamespace>PostFinanceCheckout</RootNamespace>
