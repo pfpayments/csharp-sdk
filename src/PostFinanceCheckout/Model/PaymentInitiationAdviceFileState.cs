@@ -24,6 +24,18 @@ namespace PostFinanceCheckout.Model
     {
         
         /// <summary>
+        /// Enum CREATING for value: CREATING
+        /// </summary>
+        [EnumMember(Value = "CREATING")]
+        CREATING,
+        
+        /// <summary>
+        /// Enum FAILED for value: FAILED
+        /// </summary>
+        [EnumMember(Value = "FAILED")]
+        FAILED,
+        
+        /// <summary>
         /// Enum CREATED for value: CREATED
         /// </summary>
         [EnumMember(Value = "CREATED")]
