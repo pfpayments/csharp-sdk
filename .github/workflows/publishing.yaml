@@ -24,7 +24,7 @@ jobs:
           nuget restore PostFinanceCheckout.sln
           nuget install NUnit.Console -Version 3.11.1 -OutputDirectory testrunner
           msbuild /t:restore PostFinanceCheckout.sln && msbuild PostFinanceCheckout.sln /t:build /p:Configuration=Release
-          mono testrunner/NUnit.ConsoleRunner.3.11.1/tools/nunit3-console.exe ./src/PostFinanceCheckout.Test/bin/Release/net452/PostFinanceCheckout.Test.dll --inprocess
+          mono testrunner/NUnit.ConsoleRunner.3.11.1/tools/nunit3-console.exe ./src/PostFinanceCheckout.Test/bin/Release/net5.0/PostFinanceCheckout.Test.dll --inprocess
 
   publish:
     needs: build

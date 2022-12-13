@@ -19,7 +19,7 @@ namespace PostFinanceCheckout.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "4.3.11";
+        public const string Version = "5.0.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -90,7 +90,7 @@ namespace PostFinanceCheckout.Client
             }
             _authenticationKey =  authenticationKey;
             _applicationUserID = applicationUserID;
-            UserAgent = "PostFinanceCheckout/4.3.11/csharp";
+            UserAgent = "PostFinanceCheckout/5.0.0/csharp";
             BasePath = "https://checkout.postfinance.ch:443/api";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -128,7 +128,7 @@ namespace PostFinanceCheckout.Client
                 _basePath = value;
                 // pass-through to ApiClient if it's set.
                 if(_apiClient != null) {
-                    _apiClient.RestClient.BaseUrl = new Uri(_basePath);
+                    _apiClient.RestClient.Options.BaseUrl = new Uri(_basePath);
                 }
             }
         }
@@ -166,8 +166,8 @@ namespace PostFinanceCheckout.Client
         public virtual int Timeout
         {
             
-            get { return ApiClient.RestClient.Timeout; }
-            set { ApiClient.RestClient.Timeout = value; }
+            get { return ApiClient.RestClient.Options.MaxTimeout; }
+            set { ApiClient.RestClient.Options.MaxTimeout = value; }
         }
 
         /// <summary>
@@ -338,8 +338,8 @@ namespace PostFinanceCheckout.Client
             String report = "C# SDK (PostFinanceCheckout) Debug Report:\n";
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
-            report += "    Version of the API: 4.3.11\n";
-            report += "    SDK Package Version: 4.3.11\n";
+            report += "    Version of the API: 5.0.0\n";
+            report += "    SDK Package Version: 5.0.0\n";
 
             return report;
         }
