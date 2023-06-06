@@ -10,14 +10,14 @@ The PostFinance Checkout C# library wraps around the PostFinance Checkout API. T
 
 <a name="frameworks-supported"></a>
 ## Frameworks supported
-- .NET 4.6.1 or later
+- .NET 6.0 or later
 - Windows Phone 7.1 (Mango)
 
 <a name="dependencies"></a>
 ## Dependencies
-- [RestSharp](https://www.nuget.org/packages/RestSharp) - 108.0.1
-- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 13.0.1
-- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 1.6.0
+- [RestSharp](https://www.nuget.org/packages/RestSharp) - 110.2.0
+- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 13.0.3
+- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 2.0.1
 
 The DLLs included in the package may not be the latest version. We recommend using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the latest version of the packages:
 ```
@@ -31,13 +31,13 @@ Install-Package JsonSubTypes
 ## Installation
 ```
 # Package Manager
-Install-Package PostFinanceCheckout -Version 5.2.0
+Install-Package PostFinanceCheckout -Version 6.0.0
 # .NET CLI
-dotnet add package PostFinanceCheckout --version 5.2.0
+dotnet add package PostFinanceCheckout --version 6.0.0
 # Paket CLI
-paket add PostFinanceCheckout --version 5.2.0
+paket add PostFinanceCheckout --version 6.0.0
 # PackageReference
-<PackageReference Include="PostFinanceCheckout" Version="5.2.0" />
+<PackageReference Include="PostFinanceCheckout" Version="6.0.0" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
