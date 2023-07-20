@@ -31,13 +31,13 @@ Install-Package JsonSubTypes
 ## Installation
 ```
 # Package Manager
-Install-Package PostFinanceCheckout -Version 6.0.0
+Install-Package PostFinanceCheckout -Version 7.0.0
 # .NET CLI
-dotnet add package PostFinanceCheckout --version 6.0.0
+dotnet add package PostFinanceCheckout --version 7.0.0
 # Paket CLI
-paket add PostFinanceCheckout --version 6.0.0
+paket add PostFinanceCheckout --version 7.0.0
 # PackageReference
-<PackageReference Include="PostFinanceCheckout" Version="6.0.0" />
+<PackageReference Include="PostFinanceCheckout" Version="7.0.0" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
