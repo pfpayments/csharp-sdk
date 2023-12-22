@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using PostFinanceCheckout.Client;
 using PostFinanceCheckout.Model;
+using PostFinanceCheckout.Util;
 
 namespace PostFinanceCheckout.Service
 {
@@ -41,6 +43,9 @@ namespace PostFinanceCheckout.Service
         /// <param name="language">The language in which the messages should be rendered in. (optional)</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> PerformTransactionWithHttpInfo (long? spaceId, long? transactionId, long? terminalId, string language = null);
+
+
+
         /// <summary>
         /// Perform Payment Terminal Transaction (using TID)
         /// </summary>
@@ -68,6 +73,9 @@ namespace PostFinanceCheckout.Service
         /// <param name="language">The language in which the messages should be rendered in. (optional)</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> PerformTransactionByIdentifierWithHttpInfo (long? spaceId, long? transactionId, string terminalIdentifier, string language = null);
+
+
+
         #endregion Synchronous Operations
     }
 

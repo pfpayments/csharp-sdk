@@ -18,12 +18,14 @@ The PostFinance Checkout C# library wraps around the PostFinance Checkout API. T
 - [RestSharp](https://www.nuget.org/packages/RestSharp) - 110.2.0
 - [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 13.0.3
 - [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 2.0.1
+- [BouncyCastle.Cryptography](https://www.nuget.org/packages/BouncyCastle.Cryptography/) - 2.0.0
 
 The DLLs included in the package may not be the latest version. We recommend using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the latest version of the packages:
 ```
 Install-Package RestSharp
 Install-Package Newtonsoft.Json
 Install-Package JsonSubTypes
+Install-Package BouncyCastle.Cryptography
 ```
 
 
@@ -31,13 +33,13 @@ Install-Package JsonSubTypes
 ## Installation
 ```
 # Package Manager
-Install-Package PostFinanceCheckout -Version 7.0.1
+Install-Package PostFinanceCheckout -Version 7.0.2
 # .NET CLI
-dotnet add package PostFinanceCheckout --version 7.0.1
+dotnet add package PostFinanceCheckout --version 7.0.2
 # Paket CLI
-paket add PostFinanceCheckout --version 7.0.1
+paket add PostFinanceCheckout --version 7.0.2
 # PackageReference
-<PackageReference Include="PostFinanceCheckout" Version="7.0.1" />
+<PackageReference Include="PostFinanceCheckout" Version="7.0.2" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:

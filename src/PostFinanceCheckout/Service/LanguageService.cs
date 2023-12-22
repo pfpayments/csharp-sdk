@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using PostFinanceCheckout.Client;
 using PostFinanceCheckout.Model;
+using PostFinanceCheckout.Util;
 
 namespace PostFinanceCheckout.Service
 {
@@ -33,6 +35,9 @@ namespace PostFinanceCheckout.Service
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;RestLanguage&gt;</returns>
         ApiResponse<List<RestLanguage>> AllWithHttpInfo ();
+
+
+
         #endregion Synchronous Operations
     }
 

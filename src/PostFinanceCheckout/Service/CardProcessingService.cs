@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using PostFinanceCheckout.Client;
 using PostFinanceCheckout.Model;
+using PostFinanceCheckout.Util;
 
 namespace PostFinanceCheckout.Service
 {
@@ -41,6 +43,9 @@ namespace PostFinanceCheckout.Service
         /// <param name="cardData">The card details as JSON in plain which should be used to authorize the payment.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> ProcessWithHttpInfo (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, AuthenticatedCardDataCreate cardData);
+
+
+
         /// <summary>
         /// Process With 3-D Secure
         /// </summary>
@@ -68,6 +73,9 @@ namespace PostFinanceCheckout.Service
         /// <param name="cardData">The card details as JSON in plain which should be used to authorize the payment.</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> ProcessWith3DSecureWithHttpInfo (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, TokenizedCardDataCreate cardData);
+
+
+
         #endregion Synchronous Operations
     }
 

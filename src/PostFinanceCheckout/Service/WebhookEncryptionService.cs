@@ -13,30 +13,19 @@ namespace PostFinanceCheckout.Service
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IPermissionService : IApiAccessor
+    public interface IWebhookEncryptionService : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// All
+        /// Read
         /// </summary>
         /// <remarks>
-        /// This operation returns all entities which are available.
+        /// Reads the entity with the given &#39;id&#39; and returns it.
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;Permission&gt;</returns>
-        List<Permission> All ();
-
-        /// <summary>
-        /// All
-        /// </summary>
-        /// <remarks>
-        /// This operation returns all entities which are available.
-        /// </remarks>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;Permission&gt;</returns>
-        ApiResponse<List<Permission>> AllWithHttpInfo ();
-
-
+        /// <param name="id">The ID of the key version.</param>
+        /// <returns>WebhookEncryptionPublicKey</returns>
+        WebhookEncryptionPublicKey Read (string id);
 
         /// <summary>
         /// Read
@@ -45,21 +34,18 @@ namespace PostFinanceCheckout.Service
         /// Reads the entity with the given &#39;id&#39; and returns it.
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the permission which should be returned.</param>
-        /// <returns>Permission</returns>
-        Permission Read (long? id);
+        /// <param name="id">The ID of the key version.</param>
+        /// <returns>ApiResponse of WebhookEncryptionPublicKey</returns>
+        ApiResponse<WebhookEncryptionPublicKey> ReadWithHttpInfo (string id);
 
         /// <summary>
-        /// Read
+        /// Verify content of a webhook.
         /// </summary>
-        /// <remarks>
-        /// Reads the entity with the given &#39;id&#39; and returns it.
-        /// </remarks>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the permission which should be returned.</param>
-        /// <returns>ApiResponse of Permission</returns>
-        ApiResponse<Permission> ReadWithHttpInfo (long? id);
-
+        /// <exception cref="Wallee.Client.ApiException">Thrown when when private key can not be found</exception>
+        /// <param name="signatureHeader">The content of the X-Signature header.</param>
+        /// <param name="content">The content body.</param>
+        /// <returns>true if the content body conforms with the signature header</returns>
+        bool IsContentValid(string signatureHeader, string content);
 
 
         #endregion Synchronous Operations
@@ -68,17 +54,17 @@ namespace PostFinanceCheckout.Service
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class PermissionService : IPermissionService
+    public partial class WebhookEncryptionService : IWebhookEncryptionService
     {
         private PostFinanceCheckout.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PermissionService"/> class
+        /// Initializes a new instance of the <see cref="WebhookEncryptionService"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public PermissionService(PostFinanceCheckout.Client.Configuration configuration = null)
+        public WebhookEncryptionService(PostFinanceCheckout.Client.Configuration configuration = null)
         {
             if(configuration == null){
                 throw new ArgumentException("Parameter cannot be null", "configuration");
@@ -121,71 +107,14 @@ namespace PostFinanceCheckout.Service
         }
 
         /// <summary>
-        /// All This operation returns all entities which are available.
-        /// </summary>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;Permission&gt;</returns>
-        public List<Permission> All ()
-        {
-             ApiResponse<List<Permission>> localVarResponse = AllWithHttpInfo();
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// All This operation returns all entities which are available.
-        
-        /// </summary>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;Permission&gt;</returns>
-        public ApiResponse< List<Permission> > AllWithHttpInfo ()
-        {
-
-            var localVarPath = "/permission/all";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content type
-            String[] localVarHttpContentTypes = new String[] {
-                "*/*"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
-
-                // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType, requestTimeout);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("All", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<Permission>>(localVarStatusCode,
-                    localVarResponse.Headers
-                        .GroupBy(x => x.Name, x => x.Value.ToString())
-                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
-                    (List<Permission>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Permission>)));
-        }
-        /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the permission which should be returned.</param>
-        /// <returns>Permission</returns>
-        public Permission Read (long? id)
+        /// <param name="id">The ID of the key version.</param>
+        /// <returns>WebhookEncryptionPublicKey</returns>
+        public WebhookEncryptionPublicKey Read (string id)
         {
-             ApiResponse<Permission> localVarResponse = ReadWithHttpInfo(id);
+             ApiResponse<WebhookEncryptionPublicKey> localVarResponse = ReadWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -194,15 +123,15 @@ namespace PostFinanceCheckout.Service
         
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The id of the permission which should be returned.</param>
-        /// <returns>ApiResponse of Permission</returns>
-        public ApiResponse< Permission > ReadWithHttpInfo (long? id)
+        /// <param name="id">The ID of the key version.</param>
+        /// <returns>ApiResponse of WebhookEncryptionPublicKey</returns>
+        public ApiResponse< WebhookEncryptionPublicKey > ReadWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling PermissionService->Read");
+                throw new ApiException(400, "Missing required parameter 'id' when calling WebhookEncryptionService->Read");
 
-            var localVarPath = "/permission/read";
+            var localVarPath = "/webhook-encryption/read";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -234,11 +163,39 @@ namespace PostFinanceCheckout.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Permission>(localVarStatusCode,
+            return new ApiResponse<WebhookEncryptionPublicKey>(localVarStatusCode,
                     localVarResponse.Headers
                         .GroupBy(x => x.Name, x => x.Value.ToString())
                         .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
-                    (Permission) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Permission)));
+                    (WebhookEncryptionPublicKey) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEncryptionPublicKey)));
+        }
+        /// <summary>
+        /// Verify content of a webhook.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when when private key can not be found</exception>
+        /// <param name="signatureHeader">The content of the X-Signature header.</param>
+        /// <param name="content">The content body.</param>
+        /// <returns>true if the content body conforms with the signature header</returns>
+        public bool IsContentValid(string signatureHeader, string content)
+        {
+            string regex = "^algorithm=([a-zA-Z0-9]+),\\skeyId=([a-z0-9\\-]+),\\s{1}signature=([a-zA-Z0-9+\\/=]+)$";
+            Regex pattern = new Regex(regex);
+            Match matcher = pattern.Match(signatureHeader);
+            if (matcher.Success)
+            {
+                string signatureAlgorithm = matcher.Groups[1].Value;
+                string publicKeyId = matcher.Groups[2].Value;
+                string contentSignature = matcher.Groups[3].Value;
+
+                WebhookEncryptionPublicKey publicKey = Read(publicKeyId);
+                if (publicKey == null)
+                {
+                    throw new ApiException(404, "WebhookEncryptionKey not found");
+                }
+
+                return EncryptionUtil.IsContentValid(content, contentSignature, publicKey, signatureAlgorithm);
+            }
+            throw new ArgumentException("Invalid signature header. Expected format: 'algorithm=<algorithm>, keyId=<keyId>, signature=<signature>'", "signatureHeader");
         }
     }
 }
