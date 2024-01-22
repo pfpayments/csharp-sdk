@@ -16,7 +16,7 @@ namespace PostFinanceCheckout.Util
         /// <summary>
         /// IsContentValid Validate the content using the signature and public key.
         /// </summary>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="content">Content to verify.</param>
         /// <param name="contentSignature">Base64 encoded signature of the content.</param>
         /// <param name="publicKey">The public key (WebhookEncryptionPublicKey)</param>

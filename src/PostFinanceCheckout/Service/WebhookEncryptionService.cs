@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace PostFinanceCheckout.Service
         /// <summary>
         /// Verify content of a webhook.
         /// </summary>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when when private key can not be found</exception>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when when private key can not be found</exception>
         /// <param name="signatureHeader">The content of the X-Signature header.</param>
         /// <param name="content">The content body.</param>
         /// <returns>true if the content body conforms with the signature header</returns>
@@ -56,6 +57,9 @@ namespace PostFinanceCheckout.Service
     /// </summary>
     public partial class WebhookEncryptionService : IWebhookEncryptionService
     {
+        private static readonly ConcurrentDictionary<string, WebhookEncryptionPublicKey> cache =
+                new ConcurrentDictionary<string, WebhookEncryptionPublicKey>();
+
         private PostFinanceCheckout.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -172,7 +176,7 @@ namespace PostFinanceCheckout.Service
         /// <summary>
         /// Verify content of a webhook.
         /// </summary>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when when private key can not be found</exception>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when when private key can not be found</exception>
         /// <param name="signatureHeader">The content of the X-Signature header.</param>
         /// <param name="content">The content body.</param>
         /// <returns>true if the content body conforms with the signature header</returns>
@@ -187,10 +191,14 @@ namespace PostFinanceCheckout.Service
                 string publicKeyId = matcher.Groups[2].Value;
                 string contentSignature = matcher.Groups[3].Value;
 
-                WebhookEncryptionPublicKey publicKey = Read(publicKeyId);
-                if (publicKey == null)
+                if (!cache.TryGetValue(publicKeyId, out WebhookEncryptionPublicKey publicKey))
                 {
-                    throw new ApiException(404, "WebhookEncryptionKey not found");
+                    publicKey = Read(publicKeyId);
+                    if (publicKey == null)
+                    {
+                        throw new ApiException(404, "WebhookEncryptionKey not found");
+                    }
+                    cache.TryAdd(publicKey.Id, publicKey);
                 }
 
                 return EncryptionUtil.IsContentValid(content, contentSignature, publicKey, signatureAlgorithm);
