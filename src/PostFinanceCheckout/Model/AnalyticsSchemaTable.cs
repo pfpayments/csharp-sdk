@@ -29,23 +29,23 @@ namespace PostFinanceCheckout.Model
         }
 
         /// <summary>
-        /// The schemas of all columns of this table.
+        /// The schemas of all columns of the table.
         /// </summary>
-        /// <value>The schemas of all columns of this table.</value>
+        /// <value>The schemas of all columns of the table.</value>
         [DataMember(Name="columns", EmitDefaultValue=false)]
         public List<AnalyticsSchemaColumn> Columns { get; private set; }
 
         /// <summary>
-        /// A human readable description of the entity type contained in this table.
+        /// The localized description of the table.
         /// </summary>
-        /// <value>A human readable description of the entity type contained in this table.</value>
+        /// <value>The localized description of the table.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// The name of this table.
+        /// The name of the table.
         /// </summary>
-        /// <value>The name of this table.</value>
+        /// <value>The name of the table.</value>
         [DataMember(Name="tableName", EmitDefaultValue=false)]
         public string TableName { get; private set; }
 

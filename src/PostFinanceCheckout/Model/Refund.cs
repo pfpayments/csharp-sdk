@@ -103,8 +103,9 @@ namespace PostFinanceCheckout.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Labels
+        /// The labels providing additional information about the object.
         /// </summary>
+        /// <value>The labels providing additional information about the object.</value>
         [DataMember(Name="labels", EmitDefaultValue=false)]
         public List<Label> Labels { get; private set; }
 

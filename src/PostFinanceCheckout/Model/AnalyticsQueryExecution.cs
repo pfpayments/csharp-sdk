@@ -35,30 +35,30 @@ namespace PostFinanceCheckout.Model
         }
 
         /// <summary>
-        /// The account in which the query has been executed.
+        /// The account in which the query is executed.
         /// </summary>
-        /// <value>The account in which the query has been executed.</value>
+        /// <value>The account in which the query is executed.</value>
         [DataMember(Name="account", EmitDefaultValue=false)]
         public long? Account { get; private set; }
 
         /// <summary>
-        /// The error message if and only if the query has failed, otherwise null.
+        /// The error message that describes the reason for the failure of the query execution.
         /// </summary>
-        /// <value>The error message if and only if the query has failed, otherwise null.</value>
+        /// <value>The error message that describes the reason for the failure of the query execution.</value>
         [DataMember(Name="errorMessage", EmitDefaultValue=false)]
         public string ErrorMessage { get; private set; }
 
         /// <summary>
-        /// The External ID of the query if one had been specified; otherwise null.
+        /// The external ID of the query if one was specified, otherwise null.
         /// </summary>
-        /// <value>The External ID of the query if one had been specified; otherwise null.</value>
+        /// <value>The external ID of the query if one was specified, otherwise null.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
-        /// The reason of the failure if and only if the query has failed, otherwise null.
+        /// The reason for the failure of query execution.
         /// </summary>
-        /// <value>The reason of the failure if and only if the query has failed, otherwise null.</value>
+        /// <value>The reason for the failure of query execution.</value>
         [DataMember(Name="failureReason", EmitDefaultValue=false)]
         public FailureReason FailureReason { get; private set; }
 
@@ -70,16 +70,16 @@ namespace PostFinanceCheckout.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The time at which processing of the query has finished (either successfully or by failure or by cancelation). Will be null if the query execution has not finished yet.
+        /// The date and time when the processing of the query was completed. Null if the query execution has not yet been completed.
         /// </summary>
-        /// <value>The time at which processing of the query has finished (either successfully or by failure or by cancelation). Will be null if the query execution has not finished yet.</value>
+        /// <value>The date and time when the processing of the query was completed. Null if the query execution has not yet been completed.</value>
         [DataMember(Name="processingEndTime", EmitDefaultValue=false)]
         public DateTime? ProcessingEndTime { get; private set; }
 
         /// <summary>
-        /// The time at which processing of the query has started (never null).
+        /// The date and time when the processing of the query was started.
         /// </summary>
-        /// <value>The time at which processing of the query has started (never null).</value>
+        /// <value>The date and time when the processing of the query was started.</value>
         [DataMember(Name="processingStartTime", EmitDefaultValue=false)]
         public DateTime? ProcessingStartTime { get; private set; }
 
@@ -91,23 +91,23 @@ namespace PostFinanceCheckout.Model
         public string QueryString { get; private set; }
 
         /// <summary>
-        /// The amount of data scanned while processing the query (in GB). (Note that this amount may increase over time while the query is still being processed and not finished yet.)
+        /// The amount of data that was scanned when processing the query (in GB).
         /// </summary>
-        /// <value>The amount of data scanned while processing the query (in GB). (Note that this amount may increase over time while the query is still being processed and not finished yet.)</value>
+        /// <value>The amount of data that was scanned when processing the query (in GB).</value>
         [DataMember(Name="scannedDataInGb", EmitDefaultValue=false)]
         public decimal? ScannedDataInGb { get; private set; }
 
         /// <summary>
-        /// The maximal amount of scanned data that this query is allowed to scan. After this limit is reached query will be canceled by the system. 
+        /// The maximal amount of data that this query is allowed to scan (in GB). If this limit is reached, the query will be canceled.
         /// </summary>
-        /// <value>The maximal amount of scanned data that this query is allowed to scan. After this limit is reached query will be canceled by the system. </value>
+        /// <value>The maximal amount of data that this query is allowed to scan (in GB). If this limit is reached, the query will be canceled.</value>
         [DataMember(Name="scannedDataLimit", EmitDefaultValue=false)]
         public decimal? ScannedDataLimit { get; private set; }
 
         /// <summary>
-        /// The spaces in which the query has been executed. May be empty if all spaces of the specified account have been queried.
+        /// The spaces in which the query is executed. May be empty if all spaces of the specified account have been queried.
         /// </summary>
-        /// <value>The spaces in which the query has been executed. May be empty if all spaces of the specified account have been queried.</value>
+        /// <value>The spaces in which the query is executed. May be empty if all spaces of the specified account have been queried.</value>
         [DataMember(Name="spaces", EmitDefaultValue=false)]
         public List<long?> Spaces { get; private set; }
 

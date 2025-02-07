@@ -1,15 +1,5 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using RestSharp;
 using NUnit.Framework;
-
-using PostFinanceCheckout.Model;
 using PostFinanceCheckout.Service;
-using PostFinanceCheckout.Client;
 
 namespace PostFinanceCheckout.Test
 {

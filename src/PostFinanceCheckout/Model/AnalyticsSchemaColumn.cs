@@ -43,9 +43,9 @@ namespace PostFinanceCheckout.Model
         public string ColumnName { get; private set; }
 
         /// <summary>
-        /// A human readable description of the property contained in this column or null if this is a synthetic column which is the result of some SQL expression.
+        /// The localized description of the property contained in this column or null if this is a synthetic column which is the result of some SQL expression.
         /// </summary>
-        /// <value>A human readable description of the property contained in this column or null if this is a synthetic column which is the result of some SQL expression.</value>
+        /// <value>The localized description of the property contained in this column or null if this is a synthetic column which is the result of some SQL expression.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
@@ -57,23 +57,23 @@ namespace PostFinanceCheckout.Model
         public int? Precision { get; private set; }
 
         /// <summary>
-        /// The name of the referenced table if this column represents a foreign-key relation to the IDs of another table, otherwise null.
+        /// The name of the referenced table if this column represents a foreign-key relation to another table, otherwise null.
         /// </summary>
-        /// <value>The name of the referenced table if this column represents a foreign-key relation to the IDs of another table, otherwise null.</value>
+        /// <value>The name of the referenced table if this column represents a foreign-key relation to another table, otherwise null.</value>
         [DataMember(Name="referencedTable", EmitDefaultValue=false)]
         public string ReferencedTable { get; private set; }
 
         /// <summary>
-        /// The scale (maximal number number of digits in the fractional part) in case of a decimal data type, otherwise 0.
+        /// The scale (maximal number of digits in the fractional part) in case of a decimal data type, otherwise 0.
         /// </summary>
-        /// <value>The scale (maximal number number of digits in the fractional part) in case of a decimal data type, otherwise 0.</value>
+        /// <value>The scale (maximal number of digits in the fractional part) in case of a decimal data type, otherwise 0.</value>
         [DataMember(Name="scale", EmitDefaultValue=false)]
         public int? Scale { get; private set; }
 
         /// <summary>
-        /// The name of the table which defines this column.
+        /// The name of the table that the column belongs to.
         /// </summary>
-        /// <value>The name of the table which defines this column.</value>
+        /// <value>The name of the table that the column belongs to.</value>
         [DataMember(Name="tableName", EmitDefaultValue=false)]
         public string TableName { get; private set; }
 

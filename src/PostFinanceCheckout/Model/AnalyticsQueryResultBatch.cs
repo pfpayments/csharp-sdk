@@ -29,30 +29,30 @@ namespace PostFinanceCheckout.Model
         }
 
         /// <summary>
-        /// The schemas of the columns returned by the query (in order). Will be null if the results of the query are not (yet) available.
+        /// The schemas of the columns returned by the query (in order).
         /// </summary>
-        /// <value>The schemas of the columns returned by the query (in order). Will be null if the results of the query are not (yet) available.</value>
+        /// <value>The schemas of the columns returned by the query (in order).</value>
         [DataMember(Name="columns", EmitDefaultValue=false)]
         public List<AnalyticsSchemaColumn> Columns { get; private set; }
 
         /// <summary>
-        /// The token to be provided to fetch the next batch of results. May be null if no more result batches are available.
+        /// The token to fetch the next batch of results. Null if no more results are available.
         /// </summary>
-        /// <value>The token to be provided to fetch the next batch of results. May be null if no more result batches are available.</value>
+        /// <value>The token to fetch the next batch of results. Null if no more results are available.</value>
         [DataMember(Name="nextToken", EmitDefaultValue=false)]
         public string NextToken { get; private set; }
 
         /// <summary>
-        /// The query execution which produced the result.
+        /// The query execution that produced the result.
         /// </summary>
-        /// <value>The query execution which produced the result.</value>
+        /// <value>The query execution that produced the result.</value>
         [DataMember(Name="queryExecution", EmitDefaultValue=false)]
         public AnalyticsQueryExecution QueryExecution { get; private set; }
 
         /// <summary>
-        /// The rows of the result set contained in this batch where each row is a list of column values (in order of the columns specified in the query). Will be null if the results of the query are not (yet) available.
+        /// The resulting rows contained in this batch where each row is a list of column values.
         /// </summary>
-        /// <value>The rows of the result set contained in this batch where each row is a list of column values (in order of the columns specified in the query). Will be null if the results of the query are not (yet) available.</value>
+        /// <value>The resulting rows contained in this batch where each row is a list of column values.</value>
         [DataMember(Name="rows", EmitDefaultValue=false)]
         public List<List<string>> Rows { get; private set; }
 

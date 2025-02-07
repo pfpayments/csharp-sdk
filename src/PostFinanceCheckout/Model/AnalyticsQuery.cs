@@ -15,7 +15,7 @@ using SwaggerDateConverter = PostFinanceCheckout.Client.SwaggerDateConverter;
 namespace PostFinanceCheckout.Model
 {
     /// <summary>
-    /// Represents a query to be submitted for execution in Analytics.
+    /// AnalyticsQuery
     /// </summary>
     [DataContract]
     public partial class AnalyticsQuery :  IEquatable<AnalyticsQuery>
@@ -28,7 +28,7 @@ namespace PostFinanceCheckout.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AnalyticsQuery" /> class.
         /// </summary>
-        /// <param name="accountId">The mandatory ID of an account in which the query shall be executed. Must be a valid account ID greater than 0. (required).</param>
+        /// <param name="accountId">The ID of the account in which the query is to be executed. (required).</param>
         public AnalyticsQuery(long? accountId)
         {
             // to ensure "accountId" is required (not null)
@@ -40,44 +40,44 @@ namespace PostFinanceCheckout.Model
         }
 
         /// <summary>
-        /// The mandatory ID of an account in which the query shall be executed. Must be a valid account ID greater than 0.
+        /// The ID of the account in which the query is to be executed.
         /// </summary>
-        /// <value>The mandatory ID of an account in which the query shall be executed. Must be a valid account ID greater than 0.</value>
+        /// <value>The ID of the account in which the query is to be executed.</value>
         [DataMember(Name="accountId", EmitDefaultValue=false)]
         public long? AccountId { get; set; }
 
         /// <summary>
-        /// A client generated nonce which uniquely identifies the query to be executed. Subsequent submissions with the same external ID will not re-execute the query but instead return the existing execution with that ID. Either the External ID or a Maximal Cache Age greater than 0 must be specified. If both are specified the External ID will have precedence and the Maximal Cache Age will be ignored.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>A client generated nonce which uniquely identifies the query to be executed. Subsequent submissions with the same external ID will not re-execute the query but instead return the existing execution with that ID. Either the External ID or a Maximal Cache Age greater than 0 must be specified. If both are specified the External ID will have precedence and the Maximal Cache Age will be ignored.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The maximal age in minutes of cached query executions to return. If an equivalent query execution with the same Query String, Account ID and Spaces parameters not older than the specified age is already available that execution will be returned instead of a newly started execution. Set to 0 or null (and set a unique, previously unused External ID) to force a new query execution irrespective of previous executions. Either the External ID or a Cache Duration greater than 0 must be specified. If both are specified, the External ID will be preferred (and the Maximal Cache Age ignored).
+        /// The maximum age (in minutes) of queries already executed that are to be taken into account. If an equivalent query is already available and not older than the specified age, its result will be returned instead of re-executing it. To force a new execution, specify a new, unique external ID and no maximum cache age.
         /// </summary>
-        /// <value>The maximal age in minutes of cached query executions to return. If an equivalent query execution with the same Query String, Account ID and Spaces parameters not older than the specified age is already available that execution will be returned instead of a newly started execution. Set to 0 or null (and set a unique, previously unused External ID) to force a new query execution irrespective of previous executions. Either the External ID or a Cache Duration greater than 0 must be specified. If both are specified, the External ID will be preferred (and the Maximal Cache Age ignored).</value>
+        /// <value>The maximum age (in minutes) of queries already executed that are to be taken into account. If an equivalent query is already available and not older than the specified age, its result will be returned instead of re-executing it. To force a new execution, specify a new, unique external ID and no maximum cache age.</value>
         [DataMember(Name="maxCacheAge", EmitDefaultValue=false)]
         public int? MaxCacheAge { get; set; }
 
         /// <summary>
-        /// The SQL statement which is being submitted for execution. Must be a valid PrestoDB/Athena SQL statement.
+        /// The PrestoDB/Athena SQL statement to be executed.
         /// </summary>
-        /// <value>The SQL statement which is being submitted for execution. Must be a valid PrestoDB/Athena SQL statement.</value>
+        /// <value>The PrestoDB/Athena SQL statement to be executed.</value>
         [DataMember(Name="queryString", EmitDefaultValue=false)]
         public string QueryString { get; set; }
 
         /// <summary>
-        /// The maximal amount of scanned data that this query is allowed to scan. After this limit is reached query will be canceled by the system. 
+        /// The maximum amount of data that the query is allowed to scan. After the limit is reached, the query will be canceled.
         /// </summary>
-        /// <value>The maximal amount of scanned data that this query is allowed to scan. After this limit is reached query will be canceled by the system. </value>
+        /// <value>The maximum amount of data that the query is allowed to scan. After the limit is reached, the query will be canceled.</value>
         [DataMember(Name="scannedDataLimit", EmitDefaultValue=false)]
         public decimal? ScannedDataLimit { get; set; }
 
         /// <summary>
-        /// The IDs of the spaces in which the query shall be executed. At most 5 space IDs may be specified. All specified spaces must be owned by the account specified by the accountId property. The spaces property may be missing or empty to query all spaces of the specified account.
+        /// The IDs of the spaces belonging to the specified account in which the query is to be executed. Do not provide any value to query all spaces in the specified account.
         /// </summary>
-        /// <value>The IDs of the spaces in which the query shall be executed. At most 5 space IDs may be specified. All specified spaces must be owned by the account specified by the accountId property. The spaces property may be missing or empty to query all spaces of the specified account.</value>
+        /// <value>The IDs of the spaces belonging to the specified account in which the query is to be executed. Do not provide any value to query all spaces in the specified account.</value>
         [DataMember(Name="spaceIds", EmitDefaultValue=false)]
         public List<long?> SpaceIds { get; set; }
 
