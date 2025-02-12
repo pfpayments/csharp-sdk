@@ -156,7 +156,7 @@ namespace PostFinanceCheckout.Client
         {
 
             Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
-                {"x-meta-sdk-version", "8.2.0"},
+                {"x-meta-sdk-version", "8.3.0"},
                 {"x-meta-sdk-language", "csharp"},
                 {"x-meta-sdk-provider", "PostFinance Checkout"},
                 {"x-meta-sdk-language-version", Environment.Version.ToString()}
