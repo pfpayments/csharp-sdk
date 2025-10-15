@@ -15,39 +15,25 @@ using SwaggerDateConverter = PostFinanceCheckout.Client.SwaggerDateConverter;
 namespace PostFinanceCheckout.Model
 {
     /// <summary>
-    /// The schema of a single table in Analytics.
+    /// SubscriptionUpdateRequest
     /// </summary>
     [DataContract]
-    public partial class AnalyticsSchemaTable :  IEquatable<AnalyticsSchemaTable>
+    public partial class SubscriptionUpdateRequest :  IEquatable<SubscriptionUpdateRequest>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AnalyticsSchemaTable" /> class.
+        /// Initializes a new instance of the <see cref="SubscriptionUpdateRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public AnalyticsSchemaTable()
+        public SubscriptionUpdateRequest()
         {
         }
 
         /// <summary>
-        /// The schemas of all columns of the table.
+        /// A description used to identify the subscription.
         /// </summary>
-        /// <value>The schemas of all columns of the table.</value>
-        [DataMember(Name="columns", EmitDefaultValue=false)]
-        public List<AnalyticsSchemaColumn> Columns { get; private set; }
-
-        /// <summary>
-        /// The localized description of the table.
-        /// </summary>
-        /// <value>The localized description of the table.</value>
+        /// <value>A description used to identify the subscription.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; private set; }
-
-        /// <summary>
-        /// The name of the table.
-        /// </summary>
-        /// <value>The name of the table.</value>
-        [DataMember(Name="tableName", EmitDefaultValue=false)]
-        public string TableName { get; private set; }
+        public string Description { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -56,10 +42,8 @@ namespace PostFinanceCheckout.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AnalyticsSchemaTable {\n");
-            sb.Append("  Columns: ").Append(Columns).Append("\n");
+            sb.Append("class SubscriptionUpdateRequest {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  TableName: ").Append(TableName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -80,36 +64,24 @@ namespace PostFinanceCheckout.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AnalyticsSchemaTable);
+            return this.Equals(input as SubscriptionUpdateRequest);
         }
 
         /// <summary>
-        /// Returns true if AnalyticsSchemaTable instances are equal
+        /// Returns true if SubscriptionUpdateRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of AnalyticsSchemaTable to be compared</param>
+        /// <param name="input">Instance of SubscriptionUpdateRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AnalyticsSchemaTable input)
+        public bool Equals(SubscriptionUpdateRequest input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Columns == input.Columns ||
-                    this.Columns != null &&
-                    input.Columns != null &&
-                    this.Columns.SequenceEqual(input.Columns)
-                ) && 
-                (
                     this.Description == input.Description ||
-                    this.Description != null &&
-                    input.Description != null &&
-                    this.Description.SequenceEqual(input.Description)
-                ) && 
-                (
-                    this.TableName == input.TableName ||
-                    (this.TableName != null &&
-                    this.TableName.Equals(input.TableName))
+                    (this.Description != null &&
+                    this.Description.Equals(input.Description))
                 );
         }
 
@@ -122,12 +94,8 @@ namespace PostFinanceCheckout.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Columns != null)
-                    hashCode = hashCode * 59 + this.Columns.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.TableName != null)
-                    hashCode = hashCode * 59 + this.TableName.GetHashCode();
                 return hashCode;
             }
         }

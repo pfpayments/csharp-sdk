@@ -13,156 +13,162 @@ namespace PostFinanceCheckout.Service
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAnalyticsQueryService : IApiAccessor
+    public interface ISubscriptionProductSetupFeeService : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Cancel Execution
+        /// Count
         /// </summary>
         /// <remarks>
-        /// Cancels the specified query execution.
+        /// Counts the number of items in the database as restricted by the given filter.
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution to cancel.</param>
+        /// <param name="spaceId"></param>
+        /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
+        /// <returns>long?</returns>
+        long? Count (long? spaceId, EntityQueryFilter filter = null);
+
+        /// <summary>
+        /// Count
+        /// </summary>
+        /// <remarks>
+        /// Counts the number of items in the database as restricted by the given filter.
+        /// </remarks>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
+        /// <returns>ApiResponse of long?</returns>
+        ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <remarks>
+        /// Creates the entity with the given properties.
+        /// </remarks>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="entity">The setup fee object with the properties which should be created.</param>
+        /// <returns>ProductSetupFee</returns>
+        ProductSetupFee Create (long? spaceId, ProductSetupFeeUpdate entity);
+
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <remarks>
+        /// Creates the entity with the given properties.
+        /// </remarks>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="entity">The setup fee object with the properties which should be created.</param>
+        /// <returns>ApiResponse of ProductSetupFee</returns>
+        ApiResponse<ProductSetupFee> CreateWithHttpInfo (long? spaceId, ProductSetupFeeUpdate entity);
+
+
+
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <remarks>
+        /// Deletes the entity with the given id.
+        /// </remarks>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        void CancelExecution (long? id);
+        void Delete (long? spaceId, long? id);
 
         /// <summary>
-        /// Cancel Execution
+        /// Delete
         /// </summary>
         /// <remarks>
-        /// Cancels the specified query execution.
+        /// Deletes the entity with the given id.
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution to cancel.</param>
+        /// <param name="spaceId"></param>
+        /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CancelExecutionWithHttpInfo (long? id);
+        ApiResponse<Object> DeleteWithHttpInfo (long? spaceId, long? id);
 
 
 
         /// <summary>
-        /// Fetch Result
+        /// Read
         /// </summary>
         /// <remarks>
-        /// Fetches one batch of the result of a query execution.
+        /// Reads the entity with the given &#39;id&#39; and returns it.
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to fetch the result.</param>
-        /// <param name="timeout">The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting. (optional)</param>
-        /// <param name="maxRows">The maximum number of rows to return per batch. (Between 1 and 999. The default is 999.) (optional)</param>
-        /// <param name="nextToken">The next-token of the preceding batch to get the next result batch or null to get the first result batch. (optional)</param>
-        /// <returns>AnalyticsQueryResultBatch</returns>
-        AnalyticsQueryResultBatch FetchResult (long? id, int? timeout = null, int? maxRows = null, string nextToken = null);
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the setup fee which should be returned.</param>
+        /// <returns>ProductSetupFee</returns>
+        ProductSetupFee Read (long? spaceId, long? id);
 
         /// <summary>
-        /// Fetch Result
+        /// Read
         /// </summary>
         /// <remarks>
-        /// Fetches one batch of the result of a query execution.
+        /// Reads the entity with the given &#39;id&#39; and returns it.
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to fetch the result.</param>
-        /// <param name="timeout">The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting. (optional)</param>
-        /// <param name="maxRows">The maximum number of rows to return per batch. (Between 1 and 999. The default is 999.) (optional)</param>
-        /// <param name="nextToken">The next-token of the preceding batch to get the next result batch or null to get the first result batch. (optional)</param>
-        /// <returns>ApiResponse of AnalyticsQueryResultBatch</returns>
-        ApiResponse<AnalyticsQueryResultBatch> FetchResultWithHttpInfo (long? id, int? timeout = null, int? maxRows = null, string nextToken = null);
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the setup fee which should be returned.</param>
+        /// <returns>ApiResponse of ProductSetupFee</returns>
+        ApiResponse<ProductSetupFee> ReadWithHttpInfo (long? spaceId, long? id);
 
 
 
         /// <summary>
-        /// Generate Download URL
+        /// Search
         /// </summary>
         /// <remarks>
-        /// Generate a URL from which the results of a query execution can be downloaded in CSV format.
+        /// Searches for the entities as specified by the given query.
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to generate the download URL.</param>
-        /// <param name="timeout">The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting. (optional)</param>
-        /// <returns>string</returns>
-        string GenerateDownloadUrl (long? id, int? timeout = null);
+        /// <param name="spaceId"></param>
+        /// <param name="query">The query restricts the setup fees which are returned by the search.</param>
+        /// <returns>List&lt;ProductSetupFee&gt;</returns>
+        List<ProductSetupFee> Search (long? spaceId, EntityQuery query);
 
         /// <summary>
-        /// Generate Download URL
+        /// Search
         /// </summary>
         /// <remarks>
-        /// Generate a URL from which the results of a query execution can be downloaded in CSV format.
+        /// Searches for the entities as specified by the given query.
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to generate the download URL.</param>
-        /// <param name="timeout">The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting. (optional)</param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> GenerateDownloadUrlWithHttpInfo (long? id, int? timeout = null);
-
-
-
-        /// <summary>
-        /// Get Schemas
-        /// </summary>
-        /// <remarks>
-        /// Get the schemas describing the available tables and their columns.
-        /// </remarks>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;AnalyticsSchemaTable&gt;</returns>
-        List<AnalyticsSchemaTable> Schema ();
-
-        /// <summary>
-        /// Get Schemas
-        /// </summary>
-        /// <remarks>
-        /// Get the schemas describing the available tables and their columns.
-        /// </remarks>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;AnalyticsSchemaTable&gt;</returns>
-        ApiResponse<List<AnalyticsSchemaTable>> SchemaWithHttpInfo ();
+        /// <param name="spaceId"></param>
+        /// <param name="query">The query restricts the setup fees which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;ProductSetupFee&gt;</returns>
+        ApiResponse<List<ProductSetupFee>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
 
 
 
         /// <summary>
-        /// Execution Status
+        /// Update
         /// </summary>
         /// <remarks>
-        /// Returns the current status of a query execution.
+        /// This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to get the status.</param>
-        /// <returns>AnalyticsQueryExecution</returns>
-        AnalyticsQueryExecution Status (long? id);
+        /// <param name="spaceId"></param>
+        /// <param name="entity">The setup fee object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>ProductSetupFee</returns>
+        ProductSetupFee Update (long? spaceId, ProductSetupFeeUpdate entity);
 
         /// <summary>
-        /// Execution Status
+        /// Update
         /// </summary>
         /// <remarks>
-        /// Returns the current status of a query execution.
+        /// This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to get the status.</param>
-        /// <returns>ApiResponse of AnalyticsQueryExecution</returns>
-        ApiResponse<AnalyticsQueryExecution> StatusWithHttpInfo (long? id);
-
-
-
-        /// <summary>
-        /// Submit Query
-        /// </summary>
-        /// <remarks>
-        /// Submits a query for execution.
-        /// </remarks>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">The query to submit.</param>
-        /// <returns>AnalyticsQueryExecution</returns>
-        AnalyticsQueryExecution SubmitQuery (AnalyticsQuery query);
-
-        /// <summary>
-        /// Submit Query
-        /// </summary>
-        /// <remarks>
-        /// Submits a query for execution.
-        /// </remarks>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">The query to submit.</param>
-        /// <returns>ApiResponse of AnalyticsQueryExecution</returns>
-        ApiResponse<AnalyticsQueryExecution> SubmitQueryWithHttpInfo (AnalyticsQuery query);
+        /// <param name="spaceId"></param>
+        /// <param name="entity">The setup fee object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>ApiResponse of ProductSetupFee</returns>
+        ApiResponse<ProductSetupFee> UpdateWithHttpInfo (long? spaceId, ProductSetupFeeUpdate entity);
 
 
 
@@ -172,17 +178,17 @@ namespace PostFinanceCheckout.Service
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class AnalyticsQueryService : IAnalyticsQueryService
+    public partial class SubscriptionProductSetupFeeService : ISubscriptionProductSetupFeeService
     {
         private PostFinanceCheckout.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AnalyticsQueryService"/> class
+        /// Initializes a new instance of the <see cref="SubscriptionProductSetupFeeService"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public AnalyticsQueryService(PostFinanceCheckout.Client.Configuration configuration = null)
+        public SubscriptionProductSetupFeeService(PostFinanceCheckout.Client.Configuration configuration = null)
         {
             if (configuration == null) {
                 throw new ArgumentException("Parameter cannot be null", "configuration");
@@ -225,30 +231,33 @@ namespace PostFinanceCheckout.Service
         }
 
         /// <summary>
-        /// Cancel Execution Cancels the specified query execution.
+        /// Count Counts the number of items in the database as restricted by the given filter.
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution to cancel.</param>
-        /// <returns></returns>
-        public void CancelExecution (long? id)
+        /// <param name="spaceId"></param>
+        /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
+        /// <returns>long?</returns>
+        public long? Count (long? spaceId, EntityQueryFilter filter = null)
         {
-             CancelExecutionWithHttpInfo(id);
+             ApiResponse<long?> localVarResponse = CountWithHttpInfo(spaceId, filter);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel Execution Cancels the specified query execution.
+        /// Count Counts the number of items in the database as restricted by the given filter.
         
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution to cancel.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> CancelExecutionWithHttpInfo (long? id)
+        /// <param name="spaceId"></param>
+        /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
+        /// <returns>ApiResponse of long?</returns>
+        public ApiResponse< long? > CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null)
         {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling AnalyticsQueryService->CancelExecution");
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionProductSetupFeeService->Count");
 
-            var localVarPath = "/analytics-query/cancel-execution";
+            var localVarPath = "/subscription-product-setup-fee/count";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -258,7 +267,7 @@ namespace PostFinanceCheckout.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -270,7 +279,15 @@ namespace PostFinanceCheckout.Service
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (filter != null && filter.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(filter); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = filter; // byte array
+            }
 
 			int requestTimeout = this.Configuration.Timeout * 1000;
 
@@ -284,7 +301,174 @@ namespace PostFinanceCheckout.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("CancelExecution", localVarResponse);
+                Exception exception = ExceptionFactory("Count", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<long?>(localVarStatusCode,
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (long?) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(long?)));
+        }
+        /// <summary>
+        /// Create Creates the entity with the given properties.
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="entity">The setup fee object with the properties which should be created.</param>
+        /// <returns>ProductSetupFee</returns>
+        public ProductSetupFee Create (long? spaceId, ProductSetupFeeUpdate entity)
+        {
+             ApiResponse<ProductSetupFee> localVarResponse = CreateWithHttpInfo(spaceId, entity);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create Creates the entity with the given properties.
+        
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="entity">The setup fee object with the properties which should be created.</param>
+        /// <returns>ApiResponse of ProductSetupFee</returns>
+        public ApiResponse< ProductSetupFee > CreateWithHttpInfo (long? spaceId, ProductSetupFeeUpdate entity)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionProductSetupFeeService->Create");
+            // verify the required parameter 'entity' is set
+            if (entity == null)
+                throw new ApiException(400, "Missing required parameter 'entity' when calling SubscriptionProductSetupFeeService->Create");
+
+            var localVarPath = "/subscription-product-setup-fee/create";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (entity != null && entity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(entity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = entity; // byte array
+            }
+
+			int requestTimeout = this.Configuration.Timeout * 1000;
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
+                localVarPathParams, localVarHttpContentType, requestTimeout);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Create", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ProductSetupFee>(localVarStatusCode,
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (ProductSetupFee) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ProductSetupFee)));
+        }
+        /// <summary>
+        /// Delete Deletes the entity with the given id.
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public void Delete (long? spaceId, long? id)
+        {
+             DeleteWithHttpInfo(spaceId, id);
+        }
+
+        /// <summary>
+        /// Delete Deletes the entity with the given id.
+        
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> DeleteWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionProductSetupFeeService->Delete");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling SubscriptionProductSetupFeeService->Delete");
+
+            var localVarPath = "/subscription-product-setup-fee/delete";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (id != null && id.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(id); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = id; // byte array
+            }
+
+			int requestTimeout = this.Configuration.Timeout * 1000;
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
+                localVarPathParams, localVarHttpContentType, requestTimeout);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Delete", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -295,37 +479,36 @@ namespace PostFinanceCheckout.Service
                 null);
         }
         /// <summary>
-        /// Fetch Result Fetches one batch of the result of a query execution.
+        /// Read Reads the entity with the given &#39;id&#39; and returns it.
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to fetch the result.</param>
-        /// <param name="timeout">The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting. (optional)</param>
-        /// <param name="maxRows">The maximum number of rows to return per batch. (Between 1 and 999. The default is 999.) (optional)</param>
-        /// <param name="nextToken">The next-token of the preceding batch to get the next result batch or null to get the first result batch. (optional)</param>
-        /// <returns>AnalyticsQueryResultBatch</returns>
-        public AnalyticsQueryResultBatch FetchResult (long? id, int? timeout = null, int? maxRows = null, string nextToken = null)
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the setup fee which should be returned.</param>
+        /// <returns>ProductSetupFee</returns>
+        public ProductSetupFee Read (long? spaceId, long? id)
         {
-             ApiResponse<AnalyticsQueryResultBatch> localVarResponse = FetchResultWithHttpInfo(id, timeout, maxRows, nextToken);
+             ApiResponse<ProductSetupFee> localVarResponse = ReadWithHttpInfo(spaceId, id);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Fetch Result Fetches one batch of the result of a query execution.
+        /// Read Reads the entity with the given &#39;id&#39; and returns it.
         
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to fetch the result.</param>
-        /// <param name="timeout">The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting. (optional)</param>
-        /// <param name="maxRows">The maximum number of rows to return per batch. (Between 1 and 999. The default is 999.) (optional)</param>
-        /// <param name="nextToken">The next-token of the preceding batch to get the next result batch or null to get the first result batch. (optional)</param>
-        /// <returns>ApiResponse of AnalyticsQueryResultBatch</returns>
-        public ApiResponse< AnalyticsQueryResultBatch > FetchResultWithHttpInfo (long? id, int? timeout = null, int? maxRows = null, string nextToken = null)
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the setup fee which should be returned.</param>
+        /// <returns>ApiResponse of ProductSetupFee</returns>
+        public ApiResponse< ProductSetupFee > ReadWithHttpInfo (long? spaceId, long? id)
         {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionProductSetupFeeService->Read");
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling AnalyticsQueryService->FetchResult");
+                throw new ApiException(400, "Missing required parameter 'id' when calling SubscriptionProductSetupFeeService->Read");
 
-            var localVarPath = "/analytics-query/fetch-result";
+            var localVarPath = "/subscription-product-setup-fee/read";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -347,219 +530,7 @@ namespace PostFinanceCheckout.Service
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (timeout != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timeout", timeout)); // query parameter
-            if (maxRows != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "maxRows", maxRows)); // query parameter
-            if (nextToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nextToken", nextToken)); // query parameter
-
-			int requestTimeout = this.Configuration.Timeout * 1000;
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
-                localVarFileParams,
-                localVarPathParams, localVarHttpContentType, requestTimeout);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("FetchResult", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<AnalyticsQueryResultBatch>(localVarStatusCode,
-                    localVarResponse.Headers
-                        .GroupBy(x => x.Name, x => x.Value.ToString())
-                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
-                    (AnalyticsQueryResultBatch) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnalyticsQueryResultBatch)));
-        }
-        /// <summary>
-        /// Generate Download URL Generate a URL from which the results of a query execution can be downloaded in CSV format.
-        /// </summary>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to generate the download URL.</param>
-        /// <param name="timeout">The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting. (optional)</param>
-        /// <returns>string</returns>
-        public string GenerateDownloadUrl (long? id, int? timeout = null)
-        {
-             ApiResponse<string> localVarResponse = GenerateDownloadUrlWithHttpInfo(id, timeout);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Generate Download URL Generate a URL from which the results of a query execution can be downloaded in CSV format.
-        
-        /// </summary>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to generate the download URL.</param>
-        /// <param name="timeout">The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting. (optional)</param>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > GenerateDownloadUrlWithHttpInfo (long? id, int? timeout = null)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling AnalyticsQueryService->GenerateDownloadUrl");
-
-            var localVarPath = "/analytics-query/generate-download-url";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "*/*"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (timeout != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timeout", timeout)); // query parameter
-
-			int requestTimeout = this.Configuration.Timeout * 1000;
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
-                localVarFileParams,
-                localVarPathParams, localVarHttpContentType, requestTimeout);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GenerateDownloadUrl", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<string>(localVarStatusCode,
-                    localVarResponse.Headers
-                        .GroupBy(x => x.Name, x => x.Value.ToString())
-                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
-                    (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
-        }
-        /// <summary>
-        /// Get Schemas Get the schemas describing the available tables and their columns.
-        /// </summary>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;AnalyticsSchemaTable&gt;</returns>
-        public List<AnalyticsSchemaTable> Schema ()
-        {
-             ApiResponse<List<AnalyticsSchemaTable>> localVarResponse = SchemaWithHttpInfo();
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get Schemas Get the schemas describing the available tables and their columns.
-        
-        /// </summary>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;AnalyticsSchemaTable&gt;</returns>
-        public ApiResponse< List<AnalyticsSchemaTable> > SchemaWithHttpInfo ()
-        {
-
-            var localVarPath = "/analytics-query/schema";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "*/*"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-
-			int requestTimeout = this.Configuration.Timeout * 1000;
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
-                localVarFileParams,
-                localVarPathParams, localVarHttpContentType, requestTimeout);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Schema", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<List<AnalyticsSchemaTable>>(localVarStatusCode,
-                    localVarResponse.Headers
-                        .GroupBy(x => x.Name, x => x.Value.ToString())
-                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
-                    (List<AnalyticsSchemaTable>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<AnalyticsSchemaTable>)));
-        }
-        /// <summary>
-        /// Execution Status Returns the current status of a query execution.
-        /// </summary>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to get the status.</param>
-        /// <returns>AnalyticsQueryExecution</returns>
-        public AnalyticsQueryExecution Status (long? id)
-        {
-             ApiResponse<AnalyticsQueryExecution> localVarResponse = StatusWithHttpInfo(id);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Execution Status Returns the current status of a query execution.
-        
-        /// </summary>
-        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id">The ID of the query execution for which to get the status.</param>
-        /// <returns>ApiResponse of AnalyticsQueryExecution</returns>
-        public ApiResponse< AnalyticsQueryExecution > StatusWithHttpInfo (long? id)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling AnalyticsQueryService->Status");
-
-            var localVarPath = "/analytics-query/status";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "*/*"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			int requestTimeout = this.Configuration.Timeout * 1000;
@@ -574,42 +545,47 @@ namespace PostFinanceCheckout.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Status", localVarResponse);
+                Exception exception = ExceptionFactory("Read", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<AnalyticsQueryExecution>(localVarStatusCode,
+            return new ApiResponse<ProductSetupFee>(localVarStatusCode,
                     localVarResponse.Headers
                         .GroupBy(x => x.Name, x => x.Value.ToString())
                         .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
-                    (AnalyticsQueryExecution) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnalyticsQueryExecution)));
+                    (ProductSetupFee) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ProductSetupFee)));
         }
         /// <summary>
-        /// Submit Query Submits a query for execution.
+        /// Search Searches for the entities as specified by the given query.
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">The query to submit.</param>
-        /// <returns>AnalyticsQueryExecution</returns>
-        public AnalyticsQueryExecution SubmitQuery (AnalyticsQuery query)
+        /// <param name="spaceId"></param>
+        /// <param name="query">The query restricts the setup fees which are returned by the search.</param>
+        /// <returns>List&lt;ProductSetupFee&gt;</returns>
+        public List<ProductSetupFee> Search (long? spaceId, EntityQuery query)
         {
-             ApiResponse<AnalyticsQueryExecution> localVarResponse = SubmitQueryWithHttpInfo(query);
+             ApiResponse<List<ProductSetupFee>> localVarResponse = SearchWithHttpInfo(spaceId, query);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Submit Query Submits a query for execution.
+        /// Search Searches for the entities as specified by the given query.
         
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="query">The query to submit.</param>
-        /// <returns>ApiResponse of AnalyticsQueryExecution</returns>
-        public ApiResponse< AnalyticsQueryExecution > SubmitQueryWithHttpInfo (AnalyticsQuery query)
+        /// <param name="spaceId"></param>
+        /// <param name="query">The query restricts the setup fees which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;ProductSetupFee&gt;</returns>
+        public ApiResponse< List<ProductSetupFee> > SearchWithHttpInfo (long? spaceId, EntityQuery query)
         {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionProductSetupFeeService->Search");
             // verify the required parameter 'query' is set
             if (query == null)
-                throw new ApiException(400, "Missing required parameter 'query' when calling AnalyticsQueryService->SubmitQuery");
+                throw new ApiException(400, "Missing required parameter 'query' when calling SubscriptionProductSetupFeeService->Search");
 
-            var localVarPath = "/analytics-query/submit-query";
+            var localVarPath = "/subscription-product-setup-fee/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -631,6 +607,7 @@ namespace PostFinanceCheckout.Service
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (query != null && query.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(query); // http body (model) parameter
@@ -652,15 +629,99 @@ namespace PostFinanceCheckout.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("SubmitQuery", localVarResponse);
+                Exception exception = ExceptionFactory("Search", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<AnalyticsQueryExecution>(localVarStatusCode,
+            return new ApiResponse<List<ProductSetupFee>>(localVarStatusCode,
                     localVarResponse.Headers
                         .GroupBy(x => x.Name, x => x.Value.ToString())
                         .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
-                    (AnalyticsQueryExecution) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AnalyticsQueryExecution)));
+                    (List<ProductSetupFee>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ProductSetupFee>)));
+        }
+        /// <summary>
+        /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="entity">The setup fee object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>ProductSetupFee</returns>
+        public ProductSetupFee Update (long? spaceId, ProductSetupFeeUpdate entity)
+        {
+             ApiResponse<ProductSetupFee> localVarResponse = UpdateWithHttpInfo(spaceId, entity);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
+        
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="entity">The setup fee object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>ApiResponse of ProductSetupFee</returns>
+        public ApiResponse< ProductSetupFee > UpdateWithHttpInfo (long? spaceId, ProductSetupFeeUpdate entity)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionProductSetupFeeService->Update");
+            // verify the required parameter 'entity' is set
+            if (entity == null)
+                throw new ApiException(400, "Missing required parameter 'entity' when calling SubscriptionProductSetupFeeService->Update");
+
+            var localVarPath = "/subscription-product-setup-fee/update";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (entity != null && entity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(entity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = entity; // byte array
+            }
+
+			int requestTimeout = this.Configuration.Timeout * 1000;
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
+                localVarPathParams, localVarHttpContentType, requestTimeout);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Update", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ProductSetupFee>(localVarStatusCode,
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (ProductSetupFee) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ProductSetupFee)));
         }
     }
 }

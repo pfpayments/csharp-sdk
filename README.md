@@ -32,13 +32,13 @@ Install-Package BouncyCastle.Cryptography
 ## Installation
 ```
 # Package Manager
-Install-Package PostFinanceCheckout -Version 8.3.0
+Install-Package PostFinanceCheckout -Version 9.1.0
 # .NET CLI
-dotnet add package PostFinanceCheckout --version 8.3.0
+dotnet add package PostFinanceCheckout --version 9.1.0
 # Paket CLI
-paket add PostFinanceCheckout --version 8.3.0
+paket add PostFinanceCheckout --version 9.1.0
 # PackageReference
-<PackageReference Include="PostFinanceCheckout" Version="8.3.0" />
+<PackageReference Include="PostFinanceCheckout" Version="9.1.0" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:

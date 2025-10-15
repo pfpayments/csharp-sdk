@@ -15,38 +15,25 @@ using SwaggerDateConverter = PostFinanceCheckout.Client.SwaggerDateConverter;
 namespace PostFinanceCheckout.Model
 {
     /// <summary>
-    /// The state of a query execution.
+    /// Defines SubscriptionChargeType
     /// </summary>
-    /// <value>The state of a query execution.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum AnalyticsQueryExecutionState
+    public enum SubscriptionChargeType
     {
         
         /// <summary>
-        /// Enum PROCESSING for value: PROCESSING
+        /// Enum MANUAL for value: MANUAL
         /// </summary>
-        [EnumMember(Value = "PROCESSING")]
-        PROCESSING,
+        [EnumMember(Value = "MANUAL")]
+        MANUAL,
         
         /// <summary>
-        /// Enum PROCESSED for value: PROCESSED
+        /// Enum AUTOMATIC for value: AUTOMATIC
         /// </summary>
-        [EnumMember(Value = "PROCESSED")]
-        PROCESSED,
-        
-        /// <summary>
-        /// Enum FAILED for value: FAILED
-        /// </summary>
-        [EnumMember(Value = "FAILED")]
-        FAILED,
-        
-        /// <summary>
-        /// Enum CANCELED for value: CANCELED
-        /// </summary>
-        [EnumMember(Value = "CANCELED")]
-        CANCELED
+        [EnumMember(Value = "AUTOMATIC")]
+        AUTOMATIC
     }
 
 }
