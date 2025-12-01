@@ -47,7 +47,7 @@ namespace PostFinanceCheckout.Model
         /// Initializes a new instance of the <see cref="Feature" /> class.
         /// </summary>
         /// <param name="category">category.</param>
-        public Feature(FeatureCategory category = default(FeatureCategory))
+        public Feature(FeatureCategory category = default)
         {
             this.Category = category;
         }

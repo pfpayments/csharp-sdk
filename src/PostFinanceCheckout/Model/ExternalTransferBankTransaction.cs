@@ -47,7 +47,7 @@ namespace PostFinanceCheckout.Model
         /// Initializes a new instance of the <see cref="ExternalTransferBankTransaction" /> class.
         /// </summary>
         /// <param name="bankTransaction">bankTransaction.</param>
-        public ExternalTransferBankTransaction(BankTransaction bankTransaction = default(BankTransaction))
+        public ExternalTransferBankTransaction(BankTransaction bankTransaction = default)
         {
             this.BankTransaction = bankTransaction;
         }

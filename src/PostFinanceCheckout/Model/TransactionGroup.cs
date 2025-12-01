@@ -53,7 +53,7 @@ namespace PostFinanceCheckout.Model
         /// Initializes a new instance of the <see cref="TransactionGroup" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public TransactionGroup(TransactionGroupState? state = default(TransactionGroupState?))
+        public TransactionGroup(TransactionGroupState? state = default)
         {
             this.State = state;
         }

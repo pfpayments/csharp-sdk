@@ -47,7 +47,7 @@ namespace PostFinanceCheckout.Model
         /// Initializes a new instance of the <see cref="Label" /> class.
         /// </summary>
         /// <param name="descriptor">descriptor.</param>
-        public Label(LabelDescriptor descriptor = default(LabelDescriptor))
+        public Label(LabelDescriptor descriptor = default)
         {
             this.Descriptor = descriptor;
         }

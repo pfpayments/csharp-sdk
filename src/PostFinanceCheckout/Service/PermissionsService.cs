@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using PostFinanceCheckout.Client;
 using PostFinanceCheckout.Model;
 
@@ -45,7 +49,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PermissionListResponse</returns>
-        PermissionListResponse GetPermissions(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        PermissionListResponse GetPermissions(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all permissions
@@ -61,8 +65,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PermissionListResponse</returns>
-        ApiResponse<PermissionListResponse> GetPermissionsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<PermissionListResponse> GetPermissionsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a permission
         /// </summary>
@@ -71,7 +74,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Permission</returns>
-        Permission GetPermissionsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Permission GetPermissionsId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a permission
@@ -84,8 +87,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Permission</returns>
-        ApiResponse<Permission> GetPermissionsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Permission> GetPermissionsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search permissions
         /// </summary>
@@ -97,7 +99,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PermissionSearchResponse</returns>
-        PermissionSearchResponse GetPermissionsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        PermissionSearchResponse GetPermissionsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search permissions
@@ -113,8 +115,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PermissionSearchResponse</returns>
-        ApiResponse<PermissionSearchResponse> GetPermissionsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<PermissionSearchResponse> GetPermissionsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -211,7 +212,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PermissionListResponse</returns>
-        public PermissionListResponse GetPermissions(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public PermissionListResponse GetPermissions(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             PostFinanceCheckout.Client.ApiResponse<PermissionListResponse> localVarResponse = GetPermissionsWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -228,7 +229,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PermissionListResponse</returns>
-        public PostFinanceCheckout.Client.ApiResponse<PermissionListResponse> GetPermissionsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public PostFinanceCheckout.Client.ApiResponse<PermissionListResponse> GetPermissionsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             PostFinanceCheckout.Client.RequestOptions localVarRequestOptions = new PostFinanceCheckout.Client.RequestOptions();
 
@@ -241,6 +242,7 @@ namespace PostFinanceCheckout.Service
             };
 
             var localVarContentType = PostFinanceCheckout.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -280,7 +282,7 @@ namespace PostFinanceCheckout.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<PermissionListResponse>("/permissions",
+            var localVarResponse = this.Client.Get<PermissionListResponse>("/permissions",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -301,7 +303,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Permission</returns>
-        public Permission GetPermissionsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Permission GetPermissionsId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             PostFinanceCheckout.Client.ApiResponse<Permission> localVarResponse = GetPermissionsIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -315,7 +317,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Permission</returns>
-        public PostFinanceCheckout.Client.ApiResponse<Permission> GetPermissionsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PostFinanceCheckout.Client.ApiResponse<Permission> GetPermissionsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             PostFinanceCheckout.Client.RequestOptions localVarRequestOptions = new PostFinanceCheckout.Client.RequestOptions();
 
@@ -328,6 +330,7 @@ namespace PostFinanceCheckout.Service
             };
 
             var localVarContentType = PostFinanceCheckout.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -352,7 +355,7 @@ namespace PostFinanceCheckout.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<Permission>("/permissions/{id}",
+            var localVarResponse = this.Client.Get<Permission>("/permissions/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -376,7 +379,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PermissionSearchResponse</returns>
-        public PermissionSearchResponse GetPermissionsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public PermissionSearchResponse GetPermissionsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             PostFinanceCheckout.Client.ApiResponse<PermissionSearchResponse> localVarResponse = GetPermissionsSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -393,7 +396,7 @@ namespace PostFinanceCheckout.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PermissionSearchResponse</returns>
-        public PostFinanceCheckout.Client.ApiResponse<PermissionSearchResponse> GetPermissionsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public PostFinanceCheckout.Client.ApiResponse<PermissionSearchResponse> GetPermissionsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             PostFinanceCheckout.Client.RequestOptions localVarRequestOptions = new PostFinanceCheckout.Client.RequestOptions();
 
@@ -406,6 +409,7 @@ namespace PostFinanceCheckout.Service
             };
 
             var localVarContentType = PostFinanceCheckout.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -445,7 +449,7 @@ namespace PostFinanceCheckout.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<PermissionSearchResponse>("/permissions/search",
+            var localVarResponse = this.Client.Get<PermissionSearchResponse>("/permissions/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

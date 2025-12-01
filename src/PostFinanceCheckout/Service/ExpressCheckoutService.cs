@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using PostFinanceCheckout.Client;
 using PostFinanceCheckout.Model;
 
@@ -56,7 +60,6 @@ namespace PostFinanceCheckout.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ExpressCheckoutCreateResponse</returns>
         ApiResponse<ExpressCheckoutCreateResponse> PostExpressCheckoutCreateSessionWithHttpInfo(long space, ExpressCheckoutSessionCreate expressCheckoutSessionCreate, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -184,6 +187,7 @@ namespace PostFinanceCheckout.Service
             };
 
             var localVarContentType = PostFinanceCheckout.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -205,7 +209,7 @@ namespace PostFinanceCheckout.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<ExpressCheckoutCreateResponse>("/express-checkout/create-session",
+            var localVarResponse = this.Client.Post<ExpressCheckoutCreateResponse>("/express-checkout/create-session",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
