@@ -696,7 +696,7 @@ namespace PostFinanceCheckout.Client
 
         private static void AddMetaHeaders(RestRequest request)
         {
-            request.AddHeader("x-meta-sdk-version", "10.2.0");
+            request.AddHeader("x-meta-sdk-version", "10.3.0");
             request.AddHeader("x-meta-sdk-language", "csharp");
             request.AddHeader("x-meta-sdk-provider", "postfinancecheckout");
             request.AddHeader("x-meta-sdk-language-version", Environment.Version.ToString());

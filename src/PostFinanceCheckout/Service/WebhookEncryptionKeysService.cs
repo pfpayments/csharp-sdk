@@ -259,7 +259,7 @@ namespace PostFinanceCheckout.Service
                         if (string.IsNullOrEmpty(publicKey))
                         {
                             throw new PostFinanceCheckoutSdkException(
-                                ErrorCode.UNKNOWN_WEBHOOK_ENCRYPTION_PUBLIC_KEY,
+                                SdkExceptionErrorCodes.UNKNOWN_WEBHOOK_ENCRYPTION_PUBLIC_KEY,
                                 $"Public key not found for ID: {publicKeyId}");
                         }
 
@@ -270,7 +270,7 @@ namespace PostFinanceCheckout.Service
                 }
 
                 throw new PostFinanceCheckoutSdkException(
-                    ErrorCode.INVALID_WEBHOOK_ENCRYPTION_HEADER_FORMAT,
+                    SdkExceptionErrorCodes.INVALID_WEBHOOK_ENCRYPTION_HEADER_FORMAT,
                     "Invalid webhook signature header. Expected format: 'algorithm=<algorithm>, keyId=<keyId>, signature=<signature>'");
             }
 
