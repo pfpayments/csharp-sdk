@@ -39,6 +39,54 @@ namespace PostFinanceCheckout.Service
     {
         #region Synchronous Operations
         /// <summary>
+        /// Change shipping address
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expressCheckoutShippingAddressChangeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ExpressCheckoutShippingAddressChangeResponse</returns>
+        ExpressCheckoutShippingAddressChangeResponse PatchExpressCheckoutShippingAddressChange(string sessionToken, long space, ExpressCheckoutShippingAddressChangeRequest expressCheckoutShippingAddressChangeRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Change shipping address
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expressCheckoutShippingAddressChangeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ExpressCheckoutShippingAddressChangeResponse</returns>
+        ApiResponse<ExpressCheckoutShippingAddressChangeResponse> PatchExpressCheckoutShippingAddressChangeWithHttpInfo(string sessionToken, long space, ExpressCheckoutShippingAddressChangeRequest expressCheckoutShippingAddressChangeRequest, int operationIndex = 0);
+        /// <summary>
+        /// Change shipping method
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expressCheckoutShippingMethodChangeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ExpressCheckoutShippingMethodChangeResponse</returns>
+        ExpressCheckoutShippingMethodChangeResponse PatchExpressCheckoutShippingMethodChange(string sessionToken, long space, ExpressCheckoutShippingMethodChangeRequest expressCheckoutShippingMethodChangeRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Change shipping method
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expressCheckoutShippingMethodChangeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ExpressCheckoutShippingMethodChangeResponse</returns>
+        ApiResponse<ExpressCheckoutShippingMethodChangeResponse> PatchExpressCheckoutShippingMethodChangeWithHttpInfo(string sessionToken, long space, ExpressCheckoutShippingMethodChangeRequest expressCheckoutShippingMethodChangeRequest, int operationIndex = 0);
+        /// <summary>
         /// Create a new Express Checkout Session
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
@@ -145,6 +193,178 @@ namespace PostFinanceCheckout.Service
             set { _exceptionFactory = value; }
         }
 
+        /// <summary>
+        /// Change shipping address 
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expressCheckoutShippingAddressChangeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ExpressCheckoutShippingAddressChangeResponse</returns>
+        public ExpressCheckoutShippingAddressChangeResponse PatchExpressCheckoutShippingAddressChange(string sessionToken, long space, ExpressCheckoutShippingAddressChangeRequest expressCheckoutShippingAddressChangeRequest, int operationIndex = 0)
+        {
+            PostFinanceCheckout.Client.ApiResponse<ExpressCheckoutShippingAddressChangeResponse> localVarResponse = PatchExpressCheckoutShippingAddressChangeWithHttpInfo(sessionToken, space, expressCheckoutShippingAddressChangeRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change shipping address 
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expressCheckoutShippingAddressChangeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ExpressCheckoutShippingAddressChangeResponse</returns>
+        public PostFinanceCheckout.Client.ApiResponse<ExpressCheckoutShippingAddressChangeResponse> PatchExpressCheckoutShippingAddressChangeWithHttpInfo(string sessionToken, long space, ExpressCheckoutShippingAddressChangeRequest expressCheckoutShippingAddressChangeRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+            {
+                throw new PostFinanceCheckout.Client.ApiException(400, "Missing required parameter 'sessionToken' when calling ExpressCheckoutService->PatchExpressCheckoutShippingAddressChange");
+            }
+
+            // verify the required parameter 'expressCheckoutShippingAddressChangeRequest' is set
+            if (expressCheckoutShippingAddressChangeRequest == null)
+            {
+                throw new PostFinanceCheckout.Client.ApiException(400, "Missing required parameter 'expressCheckoutShippingAddressChangeRequest' when calling ExpressCheckoutService->PatchExpressCheckoutShippingAddressChange");
+            }
+
+            PostFinanceCheckout.Client.RequestOptions localVarRequestOptions = new PostFinanceCheckout.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = PostFinanceCheckout.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = PostFinanceCheckout.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "sessionToken", sessionToken));
+            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.Data = expressCheckoutShippingAddressChangeRequest;
+
+            localVarRequestOptions.Operation = "ExpressCheckoutService.PatchExpressCheckoutShippingAddressChange";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<ExpressCheckoutShippingAddressChangeResponse>("/express-checkout/shipping/address-change",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PatchExpressCheckoutShippingAddressChange", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Change shipping method 
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expressCheckoutShippingMethodChangeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ExpressCheckoutShippingMethodChangeResponse</returns>
+        public ExpressCheckoutShippingMethodChangeResponse PatchExpressCheckoutShippingMethodChange(string sessionToken, long space, ExpressCheckoutShippingMethodChangeRequest expressCheckoutShippingMethodChangeRequest, int operationIndex = 0)
+        {
+            PostFinanceCheckout.Client.ApiResponse<ExpressCheckoutShippingMethodChangeResponse> localVarResponse = PatchExpressCheckoutShippingMethodChangeWithHttpInfo(sessionToken, space, expressCheckoutShippingMethodChangeRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change shipping method 
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sessionToken"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expressCheckoutShippingMethodChangeRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ExpressCheckoutShippingMethodChangeResponse</returns>
+        public PostFinanceCheckout.Client.ApiResponse<ExpressCheckoutShippingMethodChangeResponse> PatchExpressCheckoutShippingMethodChangeWithHttpInfo(string sessionToken, long space, ExpressCheckoutShippingMethodChangeRequest expressCheckoutShippingMethodChangeRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'sessionToken' is set
+            if (sessionToken == null)
+            {
+                throw new PostFinanceCheckout.Client.ApiException(400, "Missing required parameter 'sessionToken' when calling ExpressCheckoutService->PatchExpressCheckoutShippingMethodChange");
+            }
+
+            // verify the required parameter 'expressCheckoutShippingMethodChangeRequest' is set
+            if (expressCheckoutShippingMethodChangeRequest == null)
+            {
+                throw new PostFinanceCheckout.Client.ApiException(400, "Missing required parameter 'expressCheckoutShippingMethodChangeRequest' when calling ExpressCheckoutService->PatchExpressCheckoutShippingMethodChange");
+            }
+
+            PostFinanceCheckout.Client.RequestOptions localVarRequestOptions = new PostFinanceCheckout.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = PostFinanceCheckout.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = PostFinanceCheckout.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "sessionToken", sessionToken));
+            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.Data = expressCheckoutShippingMethodChangeRequest;
+
+            localVarRequestOptions.Operation = "ExpressCheckoutService.PatchExpressCheckoutShippingMethodChange";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<ExpressCheckoutShippingMethodChangeResponse>("/express-checkout/shipping/method-change",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PatchExpressCheckoutShippingMethodChange", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
         /// <summary>
         /// Create a new Express Checkout Session 
         /// </summary>

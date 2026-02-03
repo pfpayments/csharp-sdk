@@ -7,9 +7,9 @@ info:
 servers:
 - url: https://checkout.postfinance.ch/api/v2.0
 security:
+- cookieAuth: []
 - jwtAuth: []
 - macAuth: []
-- cookieAuth: []
 tags:
 - externalDocs:
     url: https://checkout.postfinance.ch/doc/api/web-service#accounts-service
@@ -29,6 +29,9 @@ tags:
 - externalDocs:
     url: https://checkout.postfinance.ch/doc/api/web-service#bank-transactions-service
   name: BankTransactions
+- externalDocs:
+    url: https://checkout.postfinance.ch/doc/api/web-service#bogus-express-checkout-service
+  name: BogusExpressCheckout
 - externalDocs:
     url: https://checkout.postfinance.ch/doc/api/web-service#charge-attempts-service
   name: ChargeAttempts
@@ -4250,6 +4253,114 @@ paths:
       summary: Search bank transactions
       tags:
       - BankTransactions
+  /bogus-express-checkout/on-approve:
+    post:
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#postBogusExpressCheckoutOnApprove
+      operationId: postBogusExpressCheckoutOnApprove
+      parameters:
+      - explode: true
+        in: query
+        name: sessionToken
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Specifies the ID of the space the operation should be executed
+          in.
+        explode: false
+        in: header
+        name: Space
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BogusExpressCheckoutApprovalRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExpressCheckoutApprovalResponse"
+          description: Successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request was not accepted often due to missing or invalid
+            parameters.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The necessary authentication credentials are missing or incorrect.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The application user is missing the required permissions.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested resource was not found.
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested response format is not supported.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request conflicts with another request often because of
+            to optimistic locking.
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request provides unsupported or invalid data.
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request is well-formed but contains semantic errors. Check
+            the response body for details.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Too many requests hit the API too quickly.
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: An internal error occurred on the server.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Error response.
+      summary: Approve express checkout wallet payment
+      tags:
+      - BogusExpressCheckout
   /payment/charge-attempts:
     get:
       externalDocs:
@@ -13654,6 +13765,222 @@ paths:
       summary: Search dunning flows
       tags:
       - DunningFlows
+  /express-checkout/shipping/address-change:
+    patch:
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#patchExpressCheckoutShippingAddressChange
+      operationId: patchExpressCheckoutShippingAddressChange
+      parameters:
+      - explode: true
+        in: query
+        name: sessionToken
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Specifies the ID of the space the operation should be executed
+          in.
+        explode: false
+        in: header
+        name: Space
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExpressCheckoutShippingAddressChangeRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExpressCheckoutShippingAddressChangeResponse"
+          description: Successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request was not accepted often due to missing or invalid
+            parameters.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The necessary authentication credentials are missing or incorrect.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The application user is missing the required permissions.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested resource was not found.
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested response format is not supported.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request conflicts with another request often because of
+            to optimistic locking.
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request provides unsupported or invalid data.
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request is well-formed but contains semantic errors. Check
+            the response body for details.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Too many requests hit the API too quickly.
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: An internal error occurred on the server.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Error response.
+      summary: Change shipping address
+      tags:
+      - ExpressCheckout
+  /express-checkout/shipping/method-change:
+    patch:
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#patchExpressCheckoutShippingMethodChange
+      operationId: patchExpressCheckoutShippingMethodChange
+      parameters:
+      - explode: true
+        in: query
+        name: sessionToken
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Specifies the ID of the space the operation should be executed
+          in.
+        explode: false
+        in: header
+        name: Space
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExpressCheckoutShippingMethodChangeRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExpressCheckoutShippingMethodChangeResponse"
+          description: Successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request was not accepted often due to missing or invalid
+            parameters.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The necessary authentication credentials are missing or incorrect.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The application user is missing the required permissions.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested resource was not found.
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested response format is not supported.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request conflicts with another request often because of
+            to optimistic locking.
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request provides unsupported or invalid data.
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request is well-formed but contains semantic errors. Check
+            the response body for details.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Too many requests hit the API too quickly.
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: An internal error occurred on the server.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Error response.
+      summary: Change shipping method
+      tags:
+      - ExpressCheckout
   /express-checkout/create-session:
     post:
       externalDocs:
@@ -57814,6 +58141,45 @@ components:
       title: Billing Day Customization
       type: string
       x-model-type: ENUM
+    BogusExpressCheckoutApprovalRequest:
+      example:
+        paymentData:
+          paymentToken: paymentToken
+          cryptogram: cryptogram
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#_bogusexpresscheckoutapprovalrequest
+      properties:
+        paymentData:
+          $ref: "#/components/schemas/BogusExpressCheckoutPaymentData"
+      title: Bogus Express Checkout Approval Request
+      type: object
+      x-model-type: READ
+    BogusExpressCheckoutPaymentData:
+      allOf:
+      - $ref: "#/components/schemas/ExpressCheckoutPaymentData"
+      - externalDocs:
+          url: https://checkout.postfinance.ch/doc/api/web-service#_bogusexpresscheckoutpaymentdata
+        properties:
+          paymentToken:
+            description: Wallet-generated payment token collected during approval.
+            readOnly: true
+            title: Payment Token
+            type: string
+          cryptogram:
+            description: Wallet-generated cryptogram collected during approval.
+            readOnly: true
+            title: Cryptogram
+            type: string
+        title: Bogus Express Checkout Payment Data
+        type: object
+        x-model-type: READ
+      example:
+        paymentToken: paymentToken
+        cryptogram: cryptogram
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#_bogusexpresscheckoutpaymentdata
+      title: Bogus Express Checkout Payment Data
+      x-model-type: READ
     CardAuthenticationResponse:
       enum:
       - FULLY_AUTHENTICATED
@@ -60953,6 +61319,8 @@ components:
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
           mode: DIRECT
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           id: 2
           state: CREATE
@@ -68015,6 +68383,8 @@ components:
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
           mode: DIRECT
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           id: 2
           state: CREATE
@@ -69893,6 +70263,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -70655,10 +71027,33 @@ components:
       title: Environment
       type: string
       x-model-type: ENUM
+    ExpressCheckoutApprovalResponse:
+      example:
+        merchantRedirectUrl: merchantRedirectUrl
+        sessionId: 0
+        state: PENDING
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#_expresscheckoutapprovalresponse
+      properties:
+        merchantRedirectUrl:
+          readOnly: true
+          title: Merchant Redirect Url
+          type: string
+        sessionId:
+          format: int64
+          readOnly: true
+          title: Session Id
+          type: integer
+        state:
+          $ref: "#/components/schemas/ExpressCheckoutSessionState"
+      title: Express Checkout Approval Response
+      type: object
+      x-model-type: READ
     ExpressCheckoutCreateResponse:
       example:
         iframeSrc: iframeSrc
         session: 0
+        sessionToken: sessionToken
       externalDocs:
         url: https://checkout.postfinance.ch/doc/api/web-service#_expresscheckoutcreateresponse
       properties:
@@ -70669,9 +71064,19 @@ components:
           format: int64
           title: Session
           type: integer
+        sessionToken:
+          title: Session Token
+          type: string
       title: Express Checkout Create Response
       type: object
       x-model-type: UPDATE
+    ExpressCheckoutPaymentData:
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#_expresscheckoutpaymentdata
+      properties: {}
+      title: Express Checkout Payment Data
+      type: object
+      x-model-type: READ
     ExpressCheckoutSession:
       externalDocs:
         url: https://checkout.postfinance.ch/doc/api/web-service#_expresscheckoutsession
@@ -70682,6 +71087,11 @@ components:
           readOnly: true
           title: The selected products
           type: array
+        merchantShippingCallbackUrl:
+          description: The URL to fetch the shipping options from.
+          readOnly: true
+          title: Merchant Shipping Callback Url
+          type: string
         linkedSpaceId:
           description: The spaceId linked to the entity.
           format: int64
@@ -70696,6 +71106,15 @@ components:
           type: object
         walletType:
           $ref: "#/components/schemas/ExpressCheckoutWalletType"
+        shippingAddress:
+          $ref: "#/components/schemas/Address"
+        currency:
+          description: The currency of the session.
+          readOnly: true
+          title: Currency
+          type: string
+        billingAddress:
+          $ref: "#/components/schemas/Address"
         id:
           description: Id of the entity.
           format: int64
@@ -70722,6 +71141,14 @@ components:
             $ref: "#/components/schemas/LineItem"
           title: The selected products
           type: array
+        merchantShippingCallbackUrl:
+          description: The URL to fetch the shipping options from.
+          title: Merchant Shipping Callback Url
+          type: string
+        currency:
+          description: The currency of the session.
+          title: Currency
+          type: string
         shippingOptions:
           items:
             $ref: "#/components/schemas/ExpressCheckoutShippingOption"
@@ -70742,7 +71169,222 @@ components:
       title: Express Checkout Session State
       type: string
       x-model-type: ENUM
+    ExpressCheckoutShippingAddressChangeRequest:
+      example:
+        shippingAddress:
+          country: country
+          mobilePhoneNumber: mobilePhoneNumber
+          gender: MALE
+          organizationName: organizationName
+          city: city
+          commercialRegisterNumber: commercialRegisterNumber
+          socialSecurityNumber: socialSecurityNumber
+          givenName: givenName
+          postcode: postcode
+          legalOrganizationForm:
+            country: country
+            shortcut:
+            - string: string
+              language: language
+            - string: string
+              language: language
+            englishDescription: englishDescription
+            description:
+            - string: string
+              language: language
+            - string: string
+              language: language
+            id: 4
+          salesTaxNumber: salesTaxNumber
+          dateOfBirth: 2000-01-23
+          dependentLocality: dependentLocality
+          emailAddress: emailAddress
+          phoneNumber: phoneNumber
+          sortingCode: sortingCode
+          street: street
+          familyName: familyName
+          postalState: postalState
+          salutation: salutation
+        billingAddress:
+          country: country
+          mobilePhoneNumber: mobilePhoneNumber
+          gender: MALE
+          organizationName: organizationName
+          city: city
+          commercialRegisterNumber: commercialRegisterNumber
+          socialSecurityNumber: socialSecurityNumber
+          givenName: givenName
+          postcode: postcode
+          legalOrganizationForm:
+            country: country
+            shortcut:
+            - string: string
+              language: language
+            - string: string
+              language: language
+            englishDescription: englishDescription
+            description:
+            - string: string
+              language: language
+            - string: string
+              language: language
+            id: 4
+          salesTaxNumber: salesTaxNumber
+          dateOfBirth: 2000-01-23
+          dependentLocality: dependentLocality
+          emailAddress: emailAddress
+          phoneNumber: phoneNumber
+          sortingCode: sortingCode
+          street: street
+          familyName: familyName
+          postalState: postalState
+          salutation: salutation
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#_expresscheckoutshippingaddresschangerequest
+      properties:
+        shippingAddress:
+          $ref: "#/components/schemas/Address"
+        billingAddress:
+          $ref: "#/components/schemas/Address"
+      title: Express Checkout Shipping Address Change Request
+      type: object
+      x-expandable-fields:
+      - billingAddress
+      - shippingAddress
+      x-model-type: READ
+    ExpressCheckoutShippingAddressChangeResponse:
+      example:
+        orderTotal: 0.8008281904610115
+        shippingOptions:
+        - amount: 6.027456183070403
+          description: description
+          currency: currency
+          id: id
+          label: label
+          taxAmount: 1.4658129805029452
+          selected: true
+        - amount: 6.027456183070403
+          description: description
+          currency: currency
+          id: id
+          label: label
+          taxAmount: 1.4658129805029452
+          selected: true
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#_expresscheckoutshippingaddresschangeresponse
+      properties:
+        orderTotal:
+          readOnly: true
+          title: Order Total
+          type: number
+        shippingOptions:
+          items:
+            $ref: "#/components/schemas/ExpressCheckoutShippingOption"
+          readOnly: true
+          title: Shipping Options
+          type: array
+      title: Express Checkout Shipping Address Change Response
+      type: object
+      x-model-type: READ
+    ExpressCheckoutShippingMethodChangeRequest:
+      example:
+        shippingMethodId: shippingMethodId
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#_expresscheckoutshippingmethodchangerequest
+      properties:
+        shippingMethodId:
+          description: Identifier of the selected shipping option.
+          readOnly: true
+          title: Shipping Method Id
+          type: string
+      title: Express Checkout Shipping Method Change Request
+      type: object
+      x-model-type: READ
+    ExpressCheckoutShippingMethodChangeResponse:
+      example:
+        lineItems:
+        - taxAmountPerUnit: 0.2025324113236393
+          undiscountedAmountExcludingTax: 6.628464275087742
+          quantity: 4.258773108174356
+          undiscountedUnitPriceIncludingTax: 1.041444916118296
+          amountExcludingTax: 4.678947989005849
+          undiscountedAmountIncludingTax: 7.260521264802104
+          taxes:
+          - rate: 14.658129805029452
+            title: title
+          - rate: 14.658129805029452
+            title: title
+          type: SHIPPING
+          unitPriceIncludingTax: 9.132027271330688
+          discountExcludingTax: 0.8774076871421566
+          shippingRequired: true
+          unitPriceExcludingTax: 9.702963800023566
+          name: name
+          attributes:
+            key:
+              label: label
+              value: value
+          undiscountedUnitPriceExcludingTax: 0.5199002018724985
+          amountIncludingTax: 7.933506881737151
+          discountIncludingTax: 5.507386964179881
+          sku: sku
+          taxAmount: 4.86315908102884
+          aggregatedTaxRate: 6.073898085781152
+          uniqueId: uniqueId
+        - taxAmountPerUnit: 0.2025324113236393
+          undiscountedAmountExcludingTax: 6.628464275087742
+          quantity: 4.258773108174356
+          undiscountedUnitPriceIncludingTax: 1.041444916118296
+          amountExcludingTax: 4.678947989005849
+          undiscountedAmountIncludingTax: 7.260521264802104
+          taxes:
+          - rate: 14.658129805029452
+            title: title
+          - rate: 14.658129805029452
+            title: title
+          type: SHIPPING
+          unitPriceIncludingTax: 9.132027271330688
+          discountExcludingTax: 0.8774076871421566
+          shippingRequired: true
+          unitPriceExcludingTax: 9.702963800023566
+          name: name
+          attributes:
+            key:
+              label: label
+              value: value
+          undiscountedUnitPriceExcludingTax: 0.5199002018724985
+          amountIncludingTax: 7.933506881737151
+          discountIncludingTax: 5.507386964179881
+          sku: sku
+          taxAmount: 4.86315908102884
+          aggregatedTaxRate: 6.073898085781152
+          uniqueId: uniqueId
+        orderTotal: 0.8008281904610115
+      externalDocs:
+        url: https://checkout.postfinance.ch/doc/api/web-service#_expresscheckoutshippingmethodchangeresponse
+      properties:
+        lineItems:
+          items:
+            $ref: "#/components/schemas/LineItem"
+          readOnly: true
+          title: Line Items
+          type: array
+        orderTotal:
+          readOnly: true
+          title: Order Total
+          type: number
+      title: Express Checkout Shipping Method Change Response
+      type: object
+      x-model-type: READ
     ExpressCheckoutShippingOption:
+      example:
+        amount: 6.027456183070403
+        description: description
+        currency: currency
+        id: id
+        label: label
+        taxAmount: 1.4658129805029452
+        selected: true
       externalDocs:
         url: https://checkout.postfinance.ch/doc/api/web-service#_expresscheckoutshippingoption
       properties:
@@ -70757,7 +71399,7 @@ components:
           title: Description
           type: string
         currency:
-          description: Currency of the option
+          description: Currency code (ISO-4217) of this shipping option.
           readOnly: true
           title: Currency
           type: string
@@ -76422,6 +77064,8 @@ components:
           taxAmount: 4.86315908102884
           aggregatedTaxRate: 6.073898085781152
           uniqueId: uniqueId
+        metaData:
+          key: metaData
         succeededOn: 2000-01-23T04:56:07.000+00:00
         reducedLineItems:
         - taxAmountPerUnit: 0.2025324113236393
@@ -77166,6 +77810,13 @@ components:
           readOnly: true
           title: Line Items
           type: array
+        metaData:
+          additionalProperties:
+            type: string
+          description: Allow to store additional information about the object.
+          readOnly: true
+          title: Meta Data
+          type: object
         succeededOn:
           description: The date and time when the refund succeeded.
           format: date-time
@@ -77322,6 +77973,12 @@ components:
           format: int64
           title: Completion
           type: integer
+        metaData:
+          additionalProperties:
+            type: string
+          description: Allow to store additional information about the object.
+          title: Meta Data
+          type: object
         amount:
           description: "The total monetary amount of the refund, representing the\
             \ exact credit issued to the customer."
@@ -77557,6 +78214,8 @@ components:
             taxAmount: 4.86315908102884
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           reducedLineItems:
           - taxAmountPerUnit: 0.2025324113236393
@@ -78447,6 +79106,8 @@ components:
             taxAmount: 4.86315908102884
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           reducedLineItems:
           - taxAmountPerUnit: 0.2025324113236393
@@ -79487,6 +80148,8 @@ components:
             taxAmount: 4.86315908102884
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           reducedLineItems:
           - taxAmountPerUnit: 0.2025324113236393
@@ -81217,13 +81880,13 @@ components:
           type: integer
         preprodDomainName:
           description: The preprod domain name that belongs to the scope.
-          maxLength: 40
+          maxLength: 100
           readOnly: true
           title: Preprod Domain Name
           type: string
         domainName:
           description: The domain name that belongs to the scope.
-          maxLength: 40
+          maxLength: 100
           readOnly: true
           title: Domain Name
           type: string
@@ -81243,7 +81906,7 @@ components:
           $ref: "#/components/schemas/CreationEntityState"
         sandboxDomainName:
           description: The sandbox domain name that belongs to the scope.
-          maxLength: 40
+          maxLength: 100
           readOnly: true
           title: Sandbox Domain Name
           type: string
@@ -86284,19 +86947,46 @@ components:
       x-model-type: ENUM
     SubscriptionUpdateRequest:
       example:
-        description: description
+        componentConfigurations:
+        - quantity: 0.8008281904610115
+          productComponentReferenceId: 6
+        - quantity: 0.8008281904610115
+          productComponentReferenceId: 6
+        product: 0
+        currency: currency
+        respectTerminationPeriod: true
       externalDocs:
         url: https://checkout.postfinance.ch/doc/api/web-service#_subscriptionupdaterequest
       properties:
-        description:
-          description: A description used to identify the subscription.
-          maxLength: 200
+        componentConfigurations:
+          description: The configurations of the subscription's components.
+          items:
+            $ref: "#/components/schemas/SubscriptionComponentReferenceConfiguration"
           readOnly: false
-          title: Description
+          title: Component Configurations
+          type: array
+          uniqueItems: true
+        product:
+          description: The product to subscribe to.
+          format: int64
+          readOnly: false
+          title: Product
+          type: integer
+        currency:
+          description: The three-letter code (ISO 4217 format) of the currency used
+            to invoice the customer. Must be one of the currencies supported by the
+            product.
+          readOnly: false
+          title: Currency
           type: string
+        respectTerminationPeriod:
+          description: Whether the subscriptions' termination periods should be respected.
+          readOnly: false
+          title: Respect Termination Period
+          type: boolean
       title: Subscription Update Request
       type: object
-      x-model-type: UPDATE
+      x-model-type: CREATE
     SubscriptionVersion:
       example:
         plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
@@ -90273,6 +90963,8 @@ components:
           aggregatedTaxRate: 6.073898085781152
           uniqueId: uniqueId
         mode: DIRECT
+        metaData:
+          key: metaData
         succeededOn: 2000-01-23T04:56:07.000+00:00
         id: 2
         state: CREATE
@@ -90477,6 +91169,13 @@ components:
           type: array
         mode:
           $ref: "#/components/schemas/TransactionCompletionMode"
+        metaData:
+          additionalProperties:
+            type: string
+          description: Allow to store additional information about the object.
+          readOnly: true
+          title: Meta Data
+          type: object
         succeededOn:
           description: The date and time when the transaction completion succeeded.
           format: date-time
@@ -90631,10 +91330,13 @@ components:
         - amount: 0.8008281904610115
           quantity: 6.027456183070403
           uniqueId: uniqueId
+        metaData:
+          key: metaData
         lastCompletion: true
         statementDescriptor: statementDescriptor
         externalId: externalId
         invoiceMerchantReference: invoiceMerchantReference
+        id: 1
       externalDocs:
         url: https://checkout.postfinance.ch/doc/api/web-service#_transactioncompletiondetails
       properties:
@@ -90645,6 +91347,13 @@ components:
           readOnly: false
           title: Line Items
           type: array
+        metaData:
+          additionalProperties:
+            type: string
+          description: Allow to store additional information about the object.
+          readOnly: false
+          title: Meta Data
+          type: object
         lastCompletion:
           description: "Whether this is the final completion for the transaction,\
             \ meaning no further completions can occur, and the transaction will move\
@@ -90678,6 +91387,12 @@ components:
           readOnly: false
           title: Invoice Merchant Reference
           type: string
+        id:
+          description: A unique identifier for the object.
+          format: int64
+          readOnly: false
+          title: ID
+          type: integer
       title: Completion Details
       type: object
       x-model-type: CREATE
@@ -91652,6 +92367,8 @@ components:
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
           mode: DIRECT
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           id: 2
           state: CREATE
@@ -92915,6 +93632,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -94285,6 +95004,7 @@ components:
       - PAYMENT_PAGE
       - MOBILE_SDK
       - TERMINAL
+      - CLOUD_TILL_INTERFACE
       - EXPRESS_CHECKOUT
       externalDocs:
         url: https://checkout.postfinance.ch/doc/api/web-service#_transactionuserinterfacetype
@@ -103179,6 +103899,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -104726,6 +105448,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -106302,6 +107026,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -107849,6 +108575,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -127210,6 +127938,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -128716,6 +129446,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -130251,6 +130983,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -131757,6 +132491,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -133712,6 +134448,8 @@ components:
                 aggregatedTaxRate: 6.073898085781152
                 uniqueId: uniqueId
               mode: DIRECT
+              metaData:
+                key: metaData
               succeededOn: 2000-01-23T04:56:07.000+00:00
               id: 2
               state: CREATE
@@ -134856,6 +135594,8 @@ components:
                 aggregatedTaxRate: 6.073898085781152
                 uniqueId: uniqueId
               mode: DIRECT
+              metaData:
+                key: metaData
               succeededOn: 2000-01-23T04:56:07.000+00:00
               id: 2
               state: CREATE
@@ -136029,6 +136769,8 @@ components:
                 aggregatedTaxRate: 6.073898085781152
                 uniqueId: uniqueId
               mode: DIRECT
+              metaData:
+                key: metaData
               succeededOn: 2000-01-23T04:56:07.000+00:00
               id: 2
               state: CREATE
@@ -137173,6 +137915,8 @@ components:
                 aggregatedTaxRate: 6.073898085781152
                 uniqueId: uniqueId
               mode: DIRECT
+              metaData:
+                key: metaData
               succeededOn: 2000-01-23T04:56:07.000+00:00
               id: 2
               state: CREATE
@@ -143075,6 +143819,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -143949,6 +144695,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -144852,6 +145600,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -145726,6 +146476,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -146587,6 +147339,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -147412,6 +148166,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -148266,6 +149022,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -149091,6 +149849,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -150058,6 +150818,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -150989,6 +151751,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -151949,6 +152713,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -152880,6 +153646,8 @@ components:
               taxAmount: 4.86315908102884
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             reducedLineItems:
             - taxAmountPerUnit: 0.2025324113236393
@@ -153731,6 +154499,8 @@ components:
             taxAmount: 4.86315908102884
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           reducedLineItems:
           - taxAmountPerUnit: 0.2025324113236393
@@ -154546,6 +155316,8 @@ components:
             taxAmount: 4.86315908102884
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           reducedLineItems:
           - taxAmountPerUnit: 0.2025324113236393
@@ -155390,6 +156162,8 @@ components:
             taxAmount: 4.86315908102884
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           reducedLineItems:
           - taxAmountPerUnit: 0.2025324113236393
@@ -156205,6 +156979,8 @@ components:
             taxAmount: 4.86315908102884
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           reducedLineItems:
           - taxAmountPerUnit: 0.2025324113236393
@@ -168216,6 +168992,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -169330,6 +170108,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -176875,6 +177655,8 @@ components:
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
           mode: DIRECT
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           id: 2
           state: CREATE
@@ -177877,6 +178659,8 @@ components:
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
           mode: DIRECT
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           id: 2
           state: CREATE
@@ -178908,6 +179692,8 @@ components:
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
           mode: DIRECT
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           id: 2
           state: CREATE
@@ -179910,6 +180696,8 @@ components:
             aggregatedTaxRate: 6.073898085781152
             uniqueId: uniqueId
           mode: DIRECT
+          metaData:
+            key: metaData
           succeededOn: 2000-01-23T04:56:07.000+00:00
           id: 2
           state: CREATE
@@ -180957,6 +181745,8 @@ components:
                 aggregatedTaxRate: 6.073898085781152
                 uniqueId: uniqueId
               mode: DIRECT
+              metaData:
+                key: metaData
               succeededOn: 2000-01-23T04:56:07.000+00:00
               id: 2
               state: CREATE
@@ -182081,6 +182871,8 @@ components:
                 aggregatedTaxRate: 6.073898085781152
                 uniqueId: uniqueId
               mode: DIRECT
+              metaData:
+                key: metaData
               succeededOn: 2000-01-23T04:56:07.000+00:00
               id: 2
               state: CREATE
@@ -183234,6 +184026,8 @@ components:
                 aggregatedTaxRate: 6.073898085781152
                 uniqueId: uniqueId
               mode: DIRECT
+              metaData:
+                key: metaData
               succeededOn: 2000-01-23T04:56:07.000+00:00
               id: 2
               state: CREATE
@@ -184358,6 +185152,8 @@ components:
                 aggregatedTaxRate: 6.073898085781152
                 uniqueId: uniqueId
               mode: DIRECT
+              metaData:
+                key: metaData
               succeededOn: 2000-01-23T04:56:07.000+00:00
               id: 2
               state: CREATE
@@ -185510,6 +186306,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
@@ -186624,6 +187422,8 @@ components:
               aggregatedTaxRate: 6.073898085781152
               uniqueId: uniqueId
             mode: DIRECT
+            metaData:
+              key: metaData
             succeededOn: 2000-01-23T04:56:07.000+00:00
             id: 2
             state: CREATE
