@@ -365,7 +365,7 @@ namespace PostFinanceCheckout.Service
 
             localVarRequestOptions.PathParameters.Add("customerId", PostFinanceCheckout.Client.ClientUtils.ParameterToString(customerId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", PostFinanceCheckout.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "CustomerAddressesService.DeleteCustomersCustomerIdAddressesId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -465,7 +465,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "CustomerAddressesService.GetCustomersCustomerIdAddresses";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -544,7 +544,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "CustomerAddressesService.GetCustomersCustomerIdAddressesId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -644,7 +644,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "CustomerAddressesService.GetCustomersCustomerIdAddressesSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -732,7 +732,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = customerAddressActive;
 
             localVarRequestOptions.Operation = "CustomerAddressesService.PatchCustomersCustomerIdAddressesId";
@@ -818,7 +818,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = customerAddressCreate;
 
             localVarRequestOptions.Operation = "CustomerAddressesService.PostCustomersCustomerIdAddresses";
@@ -891,7 +891,7 @@ namespace PostFinanceCheckout.Service
 
             localVarRequestOptions.PathParameters.Add("customerId", PostFinanceCheckout.Client.ClientUtils.ParameterToString(customerId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", PostFinanceCheckout.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "CustomerAddressesService.PostCustomersCustomerIdAddressesIdDefault";
             localVarRequestOptions.OperationIndex = operationIndex;

@@ -326,7 +326,7 @@ namespace PostFinanceCheckout.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", PostFinanceCheckout.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "SubscriptionMetricsService.DeleteSubscriptionsMetricsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -423,7 +423,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "SubscriptionMetricsService.GetSubscriptionsMetrics";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -499,7 +499,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "SubscriptionMetricsService.GetSubscriptionsMetricsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -596,7 +596,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "SubscriptionMetricsService.GetSubscriptionsMetricsSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -681,7 +681,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = subscriptionMetricActive;
 
             localVarRequestOptions.Operation = "SubscriptionMetricsService.PatchSubscriptionsMetricsId";
@@ -764,7 +764,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = subscriptionMetricCreate;
 
             localVarRequestOptions.Operation = "SubscriptionMetricsService.PostSubscriptionsMetrics";

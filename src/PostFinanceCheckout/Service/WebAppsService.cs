@@ -239,7 +239,7 @@ namespace PostFinanceCheckout.Service
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "WebAppsService.GetWebAppsInstalled";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -384,7 +384,7 @@ namespace PostFinanceCheckout.Service
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "WebAppsService.PostWebAppsUninstall";
             localVarRequestOptions.OperationIndex = operationIndex;

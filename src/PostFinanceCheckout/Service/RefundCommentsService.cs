@@ -389,7 +389,7 @@ namespace PostFinanceCheckout.Service
 
             localVarRequestOptions.PathParameters.Add("refundId", PostFinanceCheckout.Client.ClientUtils.ParameterToString(refundId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", PostFinanceCheckout.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundCommentsService.DeletePaymentRefundsRefundIdCommentsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -489,7 +489,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundCommentsService.GetPaymentRefundsRefundIdComments";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -568,7 +568,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundCommentsService.GetPaymentRefundsRefundIdCommentsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -668,7 +668,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundCommentsService.GetPaymentRefundsRefundIdCommentsSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -756,7 +756,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = refundCommentActive;
 
             localVarRequestOptions.Operation = "RefundCommentsService.PatchPaymentRefundsRefundIdCommentsId";
@@ -842,7 +842,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = refundCommentCreate;
 
             localVarRequestOptions.Operation = "RefundCommentsService.PostPaymentRefundsRefundIdComments";
@@ -915,7 +915,7 @@ namespace PostFinanceCheckout.Service
 
             localVarRequestOptions.PathParameters.Add("refundId", PostFinanceCheckout.Client.ClientUtils.ParameterToString(refundId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", PostFinanceCheckout.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundCommentsService.PostPaymentRefundsRefundIdCommentsIdPin";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -987,7 +987,7 @@ namespace PostFinanceCheckout.Service
 
             localVarRequestOptions.PathParameters.Add("refundId", PostFinanceCheckout.Client.ClientUtils.ParameterToString(refundId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", PostFinanceCheckout.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundCommentsService.PostPaymentRefundsRefundIdCommentsIdUnpin";
             localVarRequestOptions.OperationIndex = operationIndex;

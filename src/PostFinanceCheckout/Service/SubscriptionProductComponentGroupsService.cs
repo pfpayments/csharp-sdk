@@ -326,7 +326,7 @@ namespace PostFinanceCheckout.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", PostFinanceCheckout.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "SubscriptionProductComponentGroupsService.DeleteSubscriptionsProductsComponentGroupsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -423,7 +423,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "SubscriptionProductComponentGroupsService.GetSubscriptionsProductsComponentGroups";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -499,7 +499,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "SubscriptionProductComponentGroupsService.GetSubscriptionsProductsComponentGroupsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -596,7 +596,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "SubscriptionProductComponentGroupsService.GetSubscriptionsProductsComponentGroupsSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -681,7 +681,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = subscriptionProductComponentGroupUpdate;
 
             localVarRequestOptions.Operation = "SubscriptionProductComponentGroupsService.PatchSubscriptionsProductsComponentGroupsId";
@@ -764,7 +764,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = subscriptionProductComponentGroupUpdate;
 
             localVarRequestOptions.Operation = "SubscriptionProductComponentGroupsService.PostSubscriptionsProductsComponentGroups";

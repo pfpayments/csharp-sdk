@@ -328,7 +328,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "DunningCasesService.GetPaymentDunningCases";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -404,7 +404,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "DunningCasesService.GetPaymentDunningCasesId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -501,7 +501,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "DunningCasesService.GetPaymentDunningCasesSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -576,7 +576,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("", "plannedEndDate", plannedEndDate));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "DunningCasesService.PostPaymentDunningCasesIdSuspend";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -645,7 +645,7 @@ namespace PostFinanceCheckout.Service
             }
 
             localVarRequestOptions.PathParameters.Add("invoiceId", PostFinanceCheckout.Client.ClientUtils.ParameterToString(invoiceId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "DunningCasesService.PostPaymentDunningCasesInvoiceInvoiceId";
             localVarRequestOptions.OperationIndex = operationIndex;

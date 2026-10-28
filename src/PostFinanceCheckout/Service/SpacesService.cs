@@ -167,11 +167,12 @@ namespace PostFinanceCheckout.Service
         /// Create a space
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="spaceCreate"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Space</returns>
-        Space PostSpaces(SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0);
+        Space PostSpaces(long account, SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a space
@@ -180,11 +181,12 @@ namespace PostFinanceCheckout.Service
         /// 
         /// </remarks>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="spaceCreate"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Space</returns>
-        ApiResponse<Space> PostSpacesWithHttpInfo(SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0);
+        ApiResponse<Space> PostSpacesWithHttpInfo(long account, SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -684,13 +686,14 @@ namespace PostFinanceCheckout.Service
         /// Create a space 
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="spaceCreate"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Space</returns>
-        public Space PostSpaces(SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0)
+        public Space PostSpaces(long account, SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0)
         {
-            PostFinanceCheckout.Client.ApiResponse<Space> localVarResponse = PostSpacesWithHttpInfo(spaceCreate, expand);
+            PostFinanceCheckout.Client.ApiResponse<Space> localVarResponse = PostSpacesWithHttpInfo(account, spaceCreate, expand);
             return localVarResponse.Data;
         }
 
@@ -698,11 +701,12 @@ namespace PostFinanceCheckout.Service
         /// Create a space 
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="spaceCreate"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Space</returns>
-        public PostFinanceCheckout.Client.ApiResponse<Space> PostSpacesWithHttpInfo(SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0)
+        public PostFinanceCheckout.Client.ApiResponse<Space> PostSpacesWithHttpInfo(long account, SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'spaceCreate' is set
             if (spaceCreate == null)
@@ -738,6 +742,7 @@ namespace PostFinanceCheckout.Service
             {
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
+            localVarRequestOptions.HeaderParameters.Add("account", PostFinanceCheckout.Client.ClientUtils.ParameterToString(account)); // header parameter
             localVarRequestOptions.Data = spaceCreate;
 
             localVarRequestOptions.Operation = "SpacesService.PostSpaces";

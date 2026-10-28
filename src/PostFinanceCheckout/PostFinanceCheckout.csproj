@@ -10,9 +10,9 @@
     <Nullable>annotations</Nullable>
     <AssemblyName>PostFinanceCheckout</AssemblyName>
     <AssemblyTitle>PostFinance Checkout SDK for C#</AssemblyTitle>
-    <Authors>wallee AG</Authors>
+    <Authors>PostFinance Ltd</Authors>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Company>wallee AG</Company>
+    <Company>PostFinance Ltd</Company>
     <Copyright>Apache-2.0</Copyright>
     <Description>PostFinance Checkout SDK for C#</Description>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
@@ -30,15 +30,15 @@
     <PackageProjectUrl>https://github.com/pfpayments/csharp-sdk</PackageProjectUrl>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
     <PackageTags>PostFinanceCheckout;payment;sdk;Payment Integration</PackageTags>
-    <PackageVersion>10.4.0</PackageVersion>
-    <ReleaseVersion>10.4.0</ReleaseVersion>
+    <PackageVersion>11.0.0</PackageVersion>
+    <ReleaseVersion>11.0.0</ReleaseVersion>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/pfpayments/csharp-sdk.git</RepositoryUrl>
     <RootNamespace>PostFinanceCheckout</RootNamespace>
     <Summary>PostFinance Checkout SDK for C#</Summary>
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <Title>PostFinanceCheckout</Title>
-    <Version>10.4.0</Version>
+    <Version>11.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
