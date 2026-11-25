@@ -213,11 +213,11 @@ namespace PostFinanceCheckout.Service
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="paymentTerminalUpdate"></param>
+        /// <param name="paymentTerminalUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentTerminal</returns>
-        PaymentTerminal PatchPaymentTerminalsId(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default, int operationIndex = 0);
+        PaymentTerminal PatchPaymentTerminalsId(long id, long space, PaymentTerminalUpdateRequest paymentTerminalUpdateRequest, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a payment terminal
@@ -228,11 +228,11 @@ namespace PostFinanceCheckout.Service
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="paymentTerminalUpdate"></param>
+        /// <param name="paymentTerminalUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
-        ApiResponse<PaymentTerminal> PatchPaymentTerminalsIdWithHttpInfo(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default, int operationIndex = 0);
+        ApiResponse<PaymentTerminal> PatchPaymentTerminalsIdWithHttpInfo(long id, long space, PaymentTerminalUpdateRequest paymentTerminalUpdateRequest, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a payment terminal
         /// </summary>
@@ -1147,13 +1147,13 @@ namespace PostFinanceCheckout.Service
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="paymentTerminalUpdate"></param>
+        /// <param name="paymentTerminalUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentTerminal</returns>
-        public PaymentTerminal PatchPaymentTerminalsId(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default, int operationIndex = 0)
+        public PaymentTerminal PatchPaymentTerminalsId(long id, long space, PaymentTerminalUpdateRequest paymentTerminalUpdateRequest, List<string>? expand = default, int operationIndex = 0)
         {
-            PostFinanceCheckout.Client.ApiResponse<PaymentTerminal> localVarResponse = PatchPaymentTerminalsIdWithHttpInfo(id, space, paymentTerminalUpdate, expand);
+            PostFinanceCheckout.Client.ApiResponse<PaymentTerminal> localVarResponse = PatchPaymentTerminalsIdWithHttpInfo(id, space, paymentTerminalUpdateRequest, expand);
             return localVarResponse.Data;
         }
 
@@ -1163,16 +1163,16 @@ namespace PostFinanceCheckout.Service
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="paymentTerminalUpdate"></param>
+        /// <param name="paymentTerminalUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
-        public PostFinanceCheckout.Client.ApiResponse<PaymentTerminal> PatchPaymentTerminalsIdWithHttpInfo(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default, int operationIndex = 0)
+        public PostFinanceCheckout.Client.ApiResponse<PaymentTerminal> PatchPaymentTerminalsIdWithHttpInfo(long id, long space, PaymentTerminalUpdateRequest paymentTerminalUpdateRequest, List<string>? expand = default, int operationIndex = 0)
         {
-            // verify the required parameter 'paymentTerminalUpdate' is set
-            if (paymentTerminalUpdate == null)
+            // verify the required parameter 'paymentTerminalUpdateRequest' is set
+            if (paymentTerminalUpdateRequest == null)
             {
-                throw new PostFinanceCheckout.Client.ApiException(400, "Missing required parameter 'paymentTerminalUpdate' when calling PaymentTerminalsService->PatchPaymentTerminalsId");
+                throw new PostFinanceCheckout.Client.ApiException(400, "Missing required parameter 'paymentTerminalUpdateRequest' when calling PaymentTerminalsService->PatchPaymentTerminalsId");
             }
 
             PostFinanceCheckout.Client.RequestOptions localVarRequestOptions = new PostFinanceCheckout.Client.RequestOptions();
@@ -1205,7 +1205,7 @@ namespace PostFinanceCheckout.Service
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
             localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
-            localVarRequestOptions.Data = paymentTerminalUpdate;
+            localVarRequestOptions.Data = paymentTerminalUpdateRequest;
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.PatchPaymentTerminalsId";
             localVarRequestOptions.OperationIndex = operationIndex;

@@ -39,6 +39,31 @@ namespace PostFinanceCheckout.Service
     {
         #region Synchronous Operations
         /// <summary>
+        /// Retrieve a merchant application by account
+        /// </summary>
+        /// <remarks>
+        /// Returns the merchant application for the account specified in the account header.
+        /// </remarks>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>MerchantApplicationDataDto</returns>
+        MerchantApplicationDataDto GetOnboardingMerchantApplicationsByAccount(long account, List<string>? expand = default, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve a merchant application by account
+        /// </summary>
+        /// <remarks>
+        /// Returns the merchant application for the account specified in the account header.
+        /// </remarks>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of MerchantApplicationDataDto</returns>
+        ApiResponse<MerchantApplicationDataDto> GetOnboardingMerchantApplicationsByAccountWithHttpInfo(long account, List<string>? expand = default, int operationIndex = 0);
+        /// <summary>
         /// Retrieve a merchant application status
         /// </summary>
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
@@ -140,6 +165,32 @@ namespace PostFinanceCheckout.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of MerchantApplicationDataDto</returns>
         ApiResponse<MerchantApplicationDataDto> PostOnboardingMerchantApplicationsWithHttpInfo(long account, List<string>? expand = default, MerchantApplicationDataDto? merchantApplicationDataDto = default, int operationIndex = 0);
+        /// <summary>
+        /// Submit a merchant application and create an organization
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="merchantApplicationSubmitRequestDto"></param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>MerchantApplicationSubmittedDto</returns>
+        MerchantApplicationSubmittedDto PostOnboardingMerchantApplicationsIdSubmit(long id, long account, MerchantApplicationSubmitRequestDto merchantApplicationSubmitRequestDto, List<string>? expand = default, int operationIndex = 0);
+
+        /// <summary>
+        /// Submit a merchant application and create an organization
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="merchantApplicationSubmitRequestDto"></param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of MerchantApplicationSubmittedDto</returns>
+        ApiResponse<MerchantApplicationSubmittedDto> PostOnboardingMerchantApplicationsIdSubmitWithHttpInfo(long id, long account, MerchantApplicationSubmitRequestDto merchantApplicationSubmitRequestDto, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -225,6 +276,79 @@ namespace PostFinanceCheckout.Service
             set { _exceptionFactory = value; }
         }
 
+        /// <summary>
+        /// Retrieve a merchant application by account Returns the merchant application for the account specified in the account header.
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>MerchantApplicationDataDto</returns>
+        public MerchantApplicationDataDto GetOnboardingMerchantApplicationsByAccount(long account, List<string>? expand = default, int operationIndex = 0)
+        {
+            PostFinanceCheckout.Client.ApiResponse<MerchantApplicationDataDto> localVarResponse = GetOnboardingMerchantApplicationsByAccountWithHttpInfo(account, expand);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a merchant application by account Returns the merchant application for the account specified in the account header.
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of MerchantApplicationDataDto</returns>
+        public PostFinanceCheckout.Client.ApiResponse<MerchantApplicationDataDto> GetOnboardingMerchantApplicationsByAccountWithHttpInfo(long account, List<string>? expand = default, int operationIndex = 0)
+        {
+            PostFinanceCheckout.Client.RequestOptions localVarRequestOptions = new PostFinanceCheckout.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = PostFinanceCheckout.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = PostFinanceCheckout.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (expand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
+            }
+            localVarRequestOptions.HeaderParameters.Add("account", PostFinanceCheckout.Client.ClientUtils.ParameterToString(account)); // header parameter
+
+            localVarRequestOptions.Operation = "MerchantApplicationsService.GetOnboardingMerchantApplicationsByAccount";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<MerchantApplicationDataDto>("/onboarding/merchant-applications/by-account",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetOnboardingMerchantApplicationsByAccount", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
         /// <summary>
         /// Retrieve a merchant application status 
         /// </summary>
@@ -527,6 +651,92 @@ namespace PostFinanceCheckout.Service
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("PostOnboardingMerchantApplications", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Submit a merchant application and create an organization 
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="merchantApplicationSubmitRequestDto"></param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>MerchantApplicationSubmittedDto</returns>
+        public MerchantApplicationSubmittedDto PostOnboardingMerchantApplicationsIdSubmit(long id, long account, MerchantApplicationSubmitRequestDto merchantApplicationSubmitRequestDto, List<string>? expand = default, int operationIndex = 0)
+        {
+            PostFinanceCheckout.Client.ApiResponse<MerchantApplicationSubmittedDto> localVarResponse = PostOnboardingMerchantApplicationsIdSubmitWithHttpInfo(id, account, merchantApplicationSubmitRequestDto, expand);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Submit a merchant application and create an organization 
+        /// </summary>
+        /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="merchantApplicationSubmitRequestDto"></param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of MerchantApplicationSubmittedDto</returns>
+        public PostFinanceCheckout.Client.ApiResponse<MerchantApplicationSubmittedDto> PostOnboardingMerchantApplicationsIdSubmitWithHttpInfo(long id, long account, MerchantApplicationSubmitRequestDto merchantApplicationSubmitRequestDto, List<string>? expand = default, int operationIndex = 0)
+        {
+            // verify the required parameter 'merchantApplicationSubmitRequestDto' is set
+            if (merchantApplicationSubmitRequestDto == null)
+            {
+                throw new PostFinanceCheckout.Client.ApiException(400, "Missing required parameter 'merchantApplicationSubmitRequestDto' when calling MerchantApplicationsService->PostOnboardingMerchantApplicationsIdSubmit");
+            }
+
+            PostFinanceCheckout.Client.RequestOptions localVarRequestOptions = new PostFinanceCheckout.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = PostFinanceCheckout.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = PostFinanceCheckout.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", PostFinanceCheckout.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (expand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
+            }
+            localVarRequestOptions.HeaderParameters.Add("account", PostFinanceCheckout.Client.ClientUtils.ParameterToString(account)); // header parameter
+            localVarRequestOptions.Data = merchantApplicationSubmitRequestDto;
+
+            localVarRequestOptions.Operation = "MerchantApplicationsService.PostOnboardingMerchantApplicationsIdSubmit";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<MerchantApplicationSubmittedDto>("/onboarding/merchant-applications/{id}/submit",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostOnboardingMerchantApplicationsIdSubmit", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

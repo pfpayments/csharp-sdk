@@ -38,40 +38,26 @@ using OpenAPIDateConverter = PostFinanceCheckout.Client.OpenAPIDateConverter;
 namespace PostFinanceCheckout.Model
 {
     /// <summary>
-    /// PaymentTerminalUpdate
+    /// The confirmation required to submit a merchant application.
     /// </summary>
-    [DataContract(Name = "PaymentTerminal.Update")]
-    public partial class PaymentTerminalUpdate : IValidatableObject
+    [DataContract(Name = "MerchantApplicationSubmitRequestDto")]
+    public partial class MerchantApplicationSubmitRequestDto : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PaymentTerminalUpdate" /> class.
+        /// Initializes a new instance of the <see cref="MerchantApplicationSubmitRequestDto" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected PaymentTerminalUpdate() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PaymentTerminalUpdate" /> class.
-        /// </summary>
-        /// <param name="name">The name used to identify the payment terminal..</param>
-        /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public PaymentTerminalUpdate(string name = default, int varVersion = default)
+        /// <param name="acceptedWalleeTerms">Whether the merchant accepts the terms and conditions required for submission..</param>
+        public MerchantApplicationSubmitRequestDto(bool acceptedWalleeTerms = default)
         {
-            this.VarVersion = varVersion;
-            this.Name = name;
+            this.AcceptedWalleeTerms = acceptedWalleeTerms;
         }
 
         /// <summary>
-        /// The name used to identify the payment terminal.
+        /// Whether the merchant accepts the terms and conditions required for submission.
         /// </summary>
-        /// <value>The name used to identify the payment terminal.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-        /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
-        public int VarVersion { get; set; }
+        /// <value>Whether the merchant accepts the terms and conditions required for submission.</value>
+        [DataMember(Name = "acceptedWalleeTerms", EmitDefaultValue = true)]
+        public bool AcceptedWalleeTerms { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,9 +66,8 @@ namespace PostFinanceCheckout.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class PaymentTerminalUpdate {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("class MerchantApplicationSubmitRequestDto {\n");
+            sb.Append("  AcceptedWalleeTerms: ").Append(AcceptedWalleeTerms).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -103,12 +88,6 @@ namespace PostFinanceCheckout.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Name (string) maxLength
-            if (this.Name != null && this.Name.Length > 100)
-            {
-                yield return new ValidationResult("Invalid value for Name, length must be less than 100.", new [] { "Name" });
-            }
-
             yield break;
         }
     }

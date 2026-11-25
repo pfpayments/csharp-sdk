@@ -160,11 +160,11 @@ namespace PostFinanceCheckout.Service
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="subscriptionUpdateRequest"></param>
+        /// <param name="subscriptionPartialUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Subscription</returns>
-        Subscription PatchSubscriptionsId(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0);
+        Subscription PatchSubscriptionsId(long id, long space, SubscriptionPartialUpdateRequest subscriptionPartialUpdateRequest, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a subscription
@@ -175,11 +175,11 @@ namespace PostFinanceCheckout.Service
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="subscriptionUpdateRequest"></param>
+        /// <param name="subscriptionPartialUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Subscription</returns>
-        ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0);
+        ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionPartialUpdateRequest subscriptionPartialUpdateRequest, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a subscription
         /// </summary>
@@ -839,13 +839,13 @@ namespace PostFinanceCheckout.Service
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="subscriptionUpdateRequest"></param>
+        /// <param name="subscriptionPartialUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Subscription</returns>
-        public Subscription PatchSubscriptionsId(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0)
+        public Subscription PatchSubscriptionsId(long id, long space, SubscriptionPartialUpdateRequest subscriptionPartialUpdateRequest, List<string>? expand = default, int operationIndex = 0)
         {
-            PostFinanceCheckout.Client.ApiResponse<Subscription> localVarResponse = PatchSubscriptionsIdWithHttpInfo(id, space, subscriptionUpdateRequest, expand);
+            PostFinanceCheckout.Client.ApiResponse<Subscription> localVarResponse = PatchSubscriptionsIdWithHttpInfo(id, space, subscriptionPartialUpdateRequest, expand);
             return localVarResponse.Data;
         }
 
@@ -855,16 +855,16 @@ namespace PostFinanceCheckout.Service
         /// <exception cref="PostFinanceCheckout.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="subscriptionUpdateRequest"></param>
+        /// <param name="subscriptionPartialUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Subscription</returns>
-        public PostFinanceCheckout.Client.ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0)
+        public PostFinanceCheckout.Client.ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionPartialUpdateRequest subscriptionPartialUpdateRequest, List<string>? expand = default, int operationIndex = 0)
         {
-            // verify the required parameter 'subscriptionUpdateRequest' is set
-            if (subscriptionUpdateRequest == null)
+            // verify the required parameter 'subscriptionPartialUpdateRequest' is set
+            if (subscriptionPartialUpdateRequest == null)
             {
-                throw new PostFinanceCheckout.Client.ApiException(400, "Missing required parameter 'subscriptionUpdateRequest' when calling SubscriptionsService->PatchSubscriptionsId");
+                throw new PostFinanceCheckout.Client.ApiException(400, "Missing required parameter 'subscriptionPartialUpdateRequest' when calling SubscriptionsService->PatchSubscriptionsId");
             }
 
             PostFinanceCheckout.Client.RequestOptions localVarRequestOptions = new PostFinanceCheckout.Client.RequestOptions();
@@ -897,7 +897,7 @@ namespace PostFinanceCheckout.Service
                 localVarRequestOptions.QueryParameters.Add(PostFinanceCheckout.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
             localVarRequestOptions.HeaderParameters.Add("space", PostFinanceCheckout.Client.ClientUtils.ParameterToString(space)); // header parameter
-            localVarRequestOptions.Data = subscriptionUpdateRequest;
+            localVarRequestOptions.Data = subscriptionPartialUpdateRequest;
 
             localVarRequestOptions.Operation = "SubscriptionsService.PatchSubscriptionsId";
             localVarRequestOptions.OperationIndex = operationIndex;
